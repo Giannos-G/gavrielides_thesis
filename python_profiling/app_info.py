@@ -92,15 +92,6 @@ class LinkedList(object):
         else:
             previous.set_next(current.get_next())
 
-# Create the output file and input the data
-def print_to_file(LL):
-    new_file = open(r"/home/giannos/Desktop/app_info_out", "w")
-    current = LL.head
-    while(current):
-        new_file.write(current.name)#, current.time, current.memory, current.ncalls)
-        current = current.next_node
-    new_file.close()
-
 # Search txt files to insert the new node
 def search_and_create(mem_profiler, tm_profiler, LL):
 

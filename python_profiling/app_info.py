@@ -95,7 +95,7 @@ class LinkedList(object):
 # Search txt files to insert the new node
 def search_and_create(mem_profiler, tm_profiler, LL):
 
- # For the Memory Profiler - I may not use it
+ # For the Memory Profiler 
  for line in mem_profiler:                  # Split line by line
     for part in line.split():               # Split the string to parts in a list 
            if "def" in part:                # Check if we are at the definition line which always starts with "def"
@@ -105,7 +105,7 @@ def search_and_create(mem_profiler, tm_profiler, LL):
                 text3 = x2[1]
                 x3 = text3.split(":")       # Delete the ":"                          
                 text4 = x3[0]               # Delete the ()
-                x4 = text4.split("(",1)     # We have the name of the function in x3[0]
+                x4 = text4.split("(",1)     # We have the name of the function in x4[0]
                 
                 # Find the line that the function is def
                 n = line.split()            # n[0] holds the line that the function is def 

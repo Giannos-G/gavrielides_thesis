@@ -1,0 +1,213 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.3 103608 13172 ?        Ss   15:51   0:06 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    15:51   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   15:51   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   15:51   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   15:51   0:00 [kworker/0:0H]
+root           8  0.0  0.0      0     0 ?        I<   15:51   0:00 [mm_percpu_wq]
+root           9  0.0  0.0      0     0 ?        S    15:51   0:07 [ksoftirqd/0]
+root          10  0.0  0.0      0     0 ?        I    15:51   0:16 [rcu_sched]
+root          11  0.0  0.0      0     0 ?        S    15:51   0:00 [migration/0]
+root          12  0.0  0.0      0     0 ?        S    15:51   0:00 [idle_inject/0]
+root          14  0.0  0.0      0     0 ?        S    15:51   0:00 [cpuhp/0]
+root          15  0.0  0.0      0     0 ?        S    15:51   0:00 [cpuhp/1]
+root          16  0.0  0.0      0     0 ?        S    15:51   0:00 [idle_inject/1]
+root          17  0.0  0.0      0     0 ?        S    15:51   0:02 [migration/1]
+root          18  0.0  0.0      0     0 ?        S    15:51   0:07 [ksoftirqd/1]
+root          20  0.0  0.0      0     0 ?        I<   15:51   0:00 [kworker/1:0H-kblockd]
+root          21  0.0  0.0      0     0 ?        S    15:51   0:00 [kdevtmpfs]
+root          22  0.0  0.0      0     0 ?        I<   15:51   0:00 [netns]
+root          23  0.0  0.0      0     0 ?        S    15:51   0:00 [rcu_tasks_kthre]
+root          24  0.0  0.0      0     0 ?        S    15:51   0:00 [rcu_tasks_rude_]
+root          25  0.0  0.0      0     0 ?        S    15:51   0:00 [rcu_tasks_trace]
+root          26  0.0  0.0      0     0 ?        S    15:51   0:00 [kauditd]
+root          28  0.0  0.0      0     0 ?        S    15:51   0:00 [khungtaskd]
+root          29  0.0  0.0      0     0 ?        S    15:51   0:00 [oom_reaper]
+root          30  0.0  0.0      0     0 ?        I<   15:51   0:00 [writeback]
+root          31  0.0  0.0      0     0 ?        S    15:51   0:00 [kcompactd0]
+root          32  0.0  0.0      0     0 ?        SN   15:51   0:00 [ksmd]
+root          33  0.0  0.0      0     0 ?        SN   15:51   0:00 [khugepaged]
+root          79  0.0  0.0      0     0 ?        I<   15:51   0:00 [kintegrityd]
+root          80  0.0  0.0      0     0 ?        I<   15:51   0:00 [kblockd]
+root          81  0.0  0.0      0     0 ?        I<   15:51   0:00 [blkcg_punt_bio]
+root          82  0.0  0.0      0     0 ?        I<   15:51   0:00 [tpm_dev_wq]
+root          83  0.0  0.0      0     0 ?        I<   15:51   0:00 [ata_sff]
+root          84  0.0  0.0      0     0 ?        I<   15:51   0:00 [md]
+root          85  0.0  0.0      0     0 ?        I<   15:51   0:00 [edac-poller]
+root          86  0.0  0.0      0     0 ?        I<   15:51   0:00 [devfreq_wq]
+root          87  0.0  0.0      0     0 ?        S    15:51   0:00 [watchdogd]
+root          89  0.0  0.0      0     0 ?        I<   15:51   0:00 [pm_wq]
+root          91  0.0  0.0      0     0 ?        S    15:51   0:00 [kswapd0]
+root          92  0.0  0.0      0     0 ?        S    15:51   0:00 [ecryptfs-kthrea]
+root          94  0.0  0.0      0     0 ?        I<   15:51   0:00 [kthrotld]
+root          95  0.0  0.0      0     0 ?        I<   15:51   0:00 [acpi_thermal_pm]
+root          96  0.0  0.0      0     0 ?        S    15:51   0:00 [scsi_eh_0]
+root          97  0.0  0.0      0     0 ?        I<   15:51   0:00 [scsi_tmf_0]
+root          98  0.0  0.0      0     0 ?        S    15:51   0:00 [scsi_eh_1]
+root          99  0.0  0.0      0     0 ?        I<   15:51   0:00 [scsi_tmf_1]
+root         101  0.0  0.0      0     0 ?        I<   15:51   0:00 [vfio-irqfd-clea]
+root         102  0.0  0.0      0     0 ?        I<   15:51   0:00 [ipv6_addrconf]
+root         112  0.0  0.0      0     0 ?        I<   15:51   0:00 [kstrp]
+root         115  0.0  0.0      0     0 ?        I<   15:51   0:00 [zswap-shrink]
+root         116  0.0  0.0      0     0 ?        I<   15:51   0:00 [kworker/u5:0]
+root         122  0.0  0.0      0     0 ?        I<   15:51   0:00 [charger_manager]
+root         168  0.0  0.0      0     0 ?        S    15:51   0:00 [scsi_eh_2]
+root         169  0.0  0.0      0     0 ?        I<   15:51   0:00 [scsi_tmf_2]
+root         171  0.0  0.0      0     0 ?        I<   15:51   0:06 [kworker/0:1H-kblockd]
+root         190  0.0  0.0      0     0 ?        I<   15:51   0:06 [kworker/1:1H-kblockd]
+root         192  0.0  0.0      0     0 ?        S    15:51   0:01 [jbd2/sda5-8]
+root         193  0.0  0.0      0     0 ?        I<   15:51   0:00 [ext4-rsv-conver]
+root         233  0.0  1.3  97124 56292 ?        S<s  15:51   0:02 /lib/systemd/systemd-journald
+root         259  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop0]
+root         264  0.0  0.0      0     0 ?        S<   15:51   0:01 [loop1]
+root         266  0.0  0.0      0     0 ?        S    15:51   0:02 [irq/18-vmwgfx]
+root         267  0.0  0.0      0     0 ?        I<   15:51   0:00 [ttm_swap]
+root         270  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop2]
+root         273  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop3]
+root         278  0.0  0.1  23768  7184 ?        Ss   15:51   0:00 /lib/systemd/systemd-udevd
+root         279  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop4]
+root         281  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop5]
+root         285  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop6]
+root         286  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop7]
+root         287  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop8]
+root         289  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop9]
+root         290  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop10]
+root         291  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop11]
+root         292  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop12]
+root         293  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop13]
+root         294  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop14]
+root         295  0.0  0.0      0     0 ?        S<   15:51   0:00 [loop15]
+root         326  0.0  0.0      0     0 ?        I<   15:51   0:00 [iprt-VBoxWQueue]
+systemd+     524  0.0  0.3  24188 13712 ?        Ss   15:51   0:02 /lib/systemd/systemd-resolved
+systemd+     525  0.0  0.1  90424  6244 ?        Ssl  15:51   0:00 /lib/systemd/systemd-timesyncd
+root         561  0.0  0.1 238264  7632 ?        Ssl  15:51   0:01 /usr/lib/accountsservice/accounts-daemon
+root         562  0.0  0.0   2548   716 ?        Ss   15:51   0:00 /usr/sbin/acpid
+avahi        566  0.0  0.0   8508  3376 ?        Ss   15:51   0:00 avahi-daemon: running [giannos-VirtualBox.local]
+root         568  0.0  0.0   9424  3072 ?        Ss   15:51   0:00 /usr/sbin/cron -f
+root         570  0.0  0.2  28568  8936 ?        Ss   15:51   0:00 /usr/sbin/cupsd -l
+message+     571  0.0  0.1   9880  6280 ?        Ss   15:51   0:04 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         572  0.0  0.4 335792 19548 ?        Ssl  15:51   0:02 /usr/sbin/NetworkManager --no-daemon
+root         582  0.0  0.0  81820  3740 ?        Ssl  15:51   0:00 /usr/sbin/irqbalance --foreground
+root         585  0.0  0.4  39312 19824 ?        Ss   15:51   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root         586  0.0  0.2 241044 10724 ?        Ssl  15:51   0:02 /usr/lib/policykit-1/polkitd --no-debug
+syslog       593  0.0  0.1 224332  4648 ?        Ssl  15:51   0:00 /usr/sbin/rsyslogd -n -iNONE
+root         597  0.1  0.7 1162404 29828 ?       Ssl  15:51   0:30 /usr/lib/snapd/snapd
+root         603  0.0  0.1 235720  6688 ?        Ssl  15:51   0:00 /usr/libexec/switcheroo-control
+root         606  0.0  0.2  17056  8688 ?        Ss   15:51   0:01 /lib/systemd/systemd-logind
+root         608  0.0  0.3 393016 13128 ?        Ssl  15:51   0:00 /usr/lib/udisks2/udisksd
+root         611  0.0  0.1  13672  4908 ?        Ss   15:51   0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+avahi        624  0.0  0.0   8328   332 ?        S    15:51   0:00 avahi-daemon: chroot helper
+root         643  0.0  0.3 180432 12716 ?        Ssl  15:51   0:00 /usr/sbin/cups-browsed
+root         649  0.0  0.2 313740 10728 ?        Ssl  15:51   0:00 /usr/sbin/ModemManager --filter-policy=strict
+root         677  0.0  0.5 117840 21524 ?        Ssl  15:51   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+whoopsie     703  0.0  0.3 326852 14532 ?        Ssl  15:51   0:00 /usr/bin/whoopsie -f
+kernoops     708  0.0  0.0  11248   452 ?        Ss   15:51   0:00 /usr/sbin/kerneloops --test
+kernoops     730  0.0  0.0  11248   448 ?        Ss   15:51   0:00 /usr/sbin/kerneloops
+root         943  0.0  0.2 252184  9804 ?        Ssl  15:51   0:00 /usr/lib/upower/upowerd
+root        1083  0.0  0.2 239600  8728 ?        Ssl  15:51   0:00 /usr/sbin/gdm3
+root        1087  0.0  0.0 295412  2900 ?        Sl   15:51   0:06 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.sh
+rtkit       1163  0.0  0.0 152924  2948 ?        SNsl 15:51   0:01 /usr/libexec/rtkit-daemon
+colord      1423  0.0  0.3 246216 14260 ?        Ssl  15:52   0:00 /usr/libexec/colord
+root        1455  0.0  0.2 167184  8640 ?        Sl   15:52   0:00 gdm-session-worker [pam/gdm-password]
+giannos     1461  0.0  0.3  25448 15216 ?        Ss   15:52   0:01 /lib/systemd/systemd --user
+giannos     1462  0.0  0.0 103752  3676 ?        S    15:52   0:00 (sd-pam)
+giannos     1468  0.0  0.4 1998384 17400 ?       Ssl  15:52   0:04 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+giannos     1471  0.0  0.5 585636 23984 ?        SNsl 15:52   0:05 /usr/libexec/tracker-miner-fs
+giannos     1473  0.0  0.1 240200  6936 ?        Sl   15:52   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+giannos     1477  0.0  0.2  11164  8180 ?        Ss   15:52   0:04 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+giannos     1494  0.0  0.1 239816  7964 ?        Ssl  15:52   0:00 /usr/libexec/gvfsd
+giannos     1495  0.0  0.1 164008  6304 tty2     Ssl+ 15:52   0:00 /usr/lib/gdm3/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --systemd --session=ubuntu
+giannos     1500  1.6  2.7 582840 109436 tty2    Sl+  15:52   7:21 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3
+giannos     1502  0.0  0.1 378344  6488 ?        Sl   15:52   0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+giannos     1503  0.0  0.2 387752  9960 ?        Ssl  15:52   0:00 /usr/libexec/gvfs-udisks2-volume-monitor
+giannos     1516  0.0  0.1 235880  6776 ?        Ssl  15:52   0:00 /usr/libexec/gvfs-goa-volume-monitor
+giannos     1520  0.0  0.8 546100 34860 ?        Sl   15:52   0:00 /usr/libexec/goa-daemon
+giannos     1531  0.0  0.2 314760  9184 ?        Sl   15:52   0:00 /usr/libexec/goa-identity-service
+giannos     1539  0.0  0.1 235708  6436 ?        Ssl  15:52   0:00 /usr/libexec/gvfs-mtp-volume-monitor
+giannos     1544  0.0  0.2 316732  8984 ?        Ssl  15:52   0:03 /usr/libexec/gvfs-afc-volume-monitor
+giannos     1549  0.0  0.1 237984  6792 ?        Ssl  15:52   0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+giannos     1558  0.0  0.3 188392 14128 tty2     Sl+  15:52   0:00 /usr/libexec/gnome-session-binary --systemd --systemd --session=ubuntu
+giannos     1647  0.0  0.0  22616   360 ?        S    15:52   0:00 /usr/bin/VBoxClient --clipboard
+giannos     1648  0.0  0.1 155016  7172 ?        Sl   15:52   0:00 /usr/bin/VBoxClient --clipboard
+giannos     1657  0.0  0.0  22616   360 ?        S    15:52   0:00 /usr/bin/VBoxClient --seamless
+giannos     1658  0.0  0.0 154852  2744 ?        Sl   15:52   0:00 /usr/bin/VBoxClient --seamless
+giannos     1666  0.0  0.0  22616   360 ?        S    15:52   0:00 /usr/bin/VBoxClient --draganddrop
+giannos     1667  0.4  0.0 155368  2772 ?        Sl   15:52   2:15 /usr/bin/VBoxClient --draganddrop
+giannos     1670  0.0  0.0  22616   364 ?        S    15:52   0:00 /usr/bin/VBoxClient --vmsvga
+giannos     1671  0.0  0.0 157124  3624 ?        Sl   15:52   0:00 /usr/bin/VBoxClient --vmsvga
+giannos     1678  0.0  0.0   6040   460 ?        Ss   15:52   0:00 /usr/bin/ssh-agent /usr/bin/im-launch env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --systemd --session=ubuntu
+giannos     1698  0.0  0.1 384940  7764 ?        Ssl  15:52   0:05 /usr/bin/ibus-daemon --daemonize --xim
+giannos     1702  0.0  0.1 162708  7140 ?        Sl   15:52   0:00 /usr/libexec/ibus-memconf
+giannos     1703  0.0  1.6 704708 65956 ?        Sl   15:52   0:01 /usr/libexec/ibus-ui-gtk3
+giannos     1704  0.0  1.4 667356 57688 ?        Sl   15:52   0:03 /usr/libexec/ibus-extension-gtk3
+giannos     1709  0.0  1.3 588188 53560 ?        Sl   15:52   0:00 /usr/libexec/ibus-x11 --kill-daemon
+giannos     1711  0.0  0.1 236508  7408 ?        Sl   15:52   0:00 /usr/libexec/ibus-portal
+giannos     1721  0.0  0.1 305408  6800 ?        Ssl  15:52   0:00 /usr/libexec/at-spi-bus-launcher
+giannos     1726  0.0  0.1   7356  4112 ?        S    15:52   0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+giannos     1745  0.0  0.1 162896  6388 ?        Sl   15:52   0:02 /usr/libexec/at-spi2-registryd --use-gnome-session
+giannos     1751  0.0  0.2 610172 10396 ?        Ssl  15:52   0:01 /usr/libexec/xdg-desktop-portal
+giannos     1759  0.0  0.1 531264  6540 ?        Ssl  15:52   0:00 /usr/libexec/xdg-document-portal
+giannos     1762  0.0  0.1 235608  4528 ?        Ssl  15:52   0:00 /usr/libexec/xdg-permission-store
+giannos     1772  0.0  0.6 343424 26240 ?        Ssl  15:52   0:01 /usr/libexec/xdg-desktop-portal-gtk
+giannos     1778  0.0  0.1 156220  5920 ?        Sl   15:52   0:00 /usr/libexec/dconf-service
+giannos     1789  0.0  0.1 162700  7264 ?        Sl   15:52   0:01 /usr/libexec/ibus-engine-simple
+giannos     1794  0.0  0.1 239900  7692 ?        Sl   15:52   0:00 /usr/bin/gnome-keyring-daemon --start --foreground --components=secrets
+giannos     1805  0.0  0.1  90052  4292 ?        Ssl  15:52   0:00 /usr/libexec/gnome-session-ctl --monitor
+giannos     1810  0.0  0.3 623616 16052 ?        Ssl  15:52   0:00 /usr/libexec/gnome-session-binary --systemd-service --session=ubuntu
+giannos     1828  2.7  8.5 4147828 343676 ?      Ssl  15:52  12:39 /usr/bin/gnome-shell
+giannos     1859  0.0  0.4 581056 18136 ?        Sl   15:52   0:00 /usr/libexec/gnome-shell-calendar-server
+giannos     1867  0.0  0.5 1004660 23460 ?       Ssl  15:52   0:00 /usr/libexec/evolution-source-registry
+giannos     1880  0.0  0.6 838644 27568 ?        Ssl  15:52   0:00 /usr/libexec/evolution-calendar-factory
+giannos     1889  0.0  0.6 673316 26384 ?        Ssl  15:52   0:00 /usr/libexec/evolution-addressbook-factory
+giannos     1905  0.0  0.6 2598528 24804 ?       Sl   15:52   0:00 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications
+giannos     1911  0.0  0.2 313964  8316 ?        Sl   15:52   0:00 /usr/libexec/gvfsd-trash --spawner :1.3 /org/gtk/gvfs/exec_spaw/0
+giannos     1927  0.0  0.1 309656  6524 ?        Ssl  15:52   0:00 /usr/libexec/gsd-a11y-settings
+giannos     1931  0.0  0.6 563360 25068 ?        Ssl  15:52   0:00 /usr/libexec/gsd-color
+giannos     1936  0.0  0.3 373576 14728 ?        Ssl  15:52   0:00 /usr/libexec/gsd-datetime
+giannos     1937  0.0  0.1 311716  7764 ?        Ssl  15:52   0:00 /usr/libexec/gsd-housekeeping
+giannos     1940  0.0  0.6 341136 24412 ?        Ssl  15:52   0:00 /usr/libexec/gsd-keyboard
+giannos     1944  0.0  0.6 757364 26972 ?        Ssl  15:52   0:00 /usr/libexec/gsd-media-keys
+giannos     1948  0.0  0.6 341760 25380 ?        Ssl  15:52   0:00 /usr/libexec/gsd-power
+giannos     1950  0.0  0.2 248216 11360 ?        Ssl  15:52   0:00 /usr/libexec/gsd-print-notifications
+giannos     1953  0.0  0.1 457104  6020 ?        Ssl  15:52   0:00 /usr/libexec/gsd-rfkill
+giannos     1960  0.0  0.1 235512  5976 ?        Ssl  15:52   0:00 /usr/libexec/gsd-screensaver-proxy
+giannos     1962  0.0  0.2 464776  8788 ?        Ssl  15:52   0:00 /usr/libexec/gsd-sharing
+giannos     1965  0.0  0.2 315160  8452 ?        Ssl  15:52   0:00 /usr/libexec/gsd-smartcard
+giannos     1979  0.0  0.2 319328  9116 ?        Ssl  15:52   0:00 /usr/libexec/gsd-sound
+giannos     1986  0.0  0.1 384956  7256 ?        Ssl  15:52   0:00 /usr/libexec/gsd-usb-protection
+giannos     1989  0.0  0.5 340700 23948 ?        Ssl  15:52   0:00 /usr/libexec/gsd-wacom
+giannos     1999  0.0  0.2 313980  8128 ?        Ssl  15:52   0:00 /usr/libexec/gsd-wwan
+giannos     2000  0.0  1.3 707144 53160 ?        Sl   15:52   0:00 /usr/libexec/evolution-data-server/evolution-alarm-notify
+giannos     2003  0.0  0.6 341876 25288 ?        Ssl  15:52   0:00 /usr/libexec/gsd-xsettings
+giannos     2018  0.0  0.1 231800  5964 ?        Sl   15:52   0:00 /usr/libexec/gsd-disk-utility-notify
+giannos     2055  0.0  0.3 342168 15132 ?        Sl   15:52   0:00 /usr/libexec/gsd-printer
+giannos     2118  0.0  4.5 1273112 182060 ?      Sl   15:52   0:10 /snap/snap-store/518/usr/bin/snap-store --gapplication-service
+giannos     2911  0.0  0.1 162360  6520 ?        Ssl  15:53   0:00 /usr/libexec/gvfsd-metadata
+giannos     2918  0.0  0.9 722660 36516 ?        Sl   15:53   0:01 update-notifier
+root        6560  0.0  0.0      0     0 ?        S<   18:02   0:00 [loop16]
+root        6653  0.0  0.0      0     0 ?        S<   18:03   0:00 [loop17]
+giannos     8209  0.0  1.6 916916 67384 ?        Sl   19:22   0:06 /usr/bin/nautilus --gapplication-service
+giannos     8318  0.4  3.7 5114504 152464 ?      SLsl 19:23   1:11 /snap/code/58/usr/share/code/code --force-user-env --no-sandbox --unity-launch --no-sandbox
+giannos     8320  0.0  1.1 359236 45180 ?        S    19:23   0:00 /snap/code/58/usr/share/code/code --type=zygote --no-zygote-sandbox --no-sandbox
+giannos     8321  0.0  1.1 359236 45036 ?        S    19:23   0:00 /snap/code/58/usr/share/code/code --type=zygote --no-sandbox
+giannos     8359  0.0  1.5 433680 63320 ?        Sl   19:23   0:00 /snap/code/58/usr/share/code/code --type=utility --utility-sub-type=network.mojom.NetworkService --field-trial-handle=3397781749939279533,15945848711427992230,131072 --enable-features=WebComponentsV0Enabled --disable-features=CookiesWithoutSameSiteMustBeSecure,SameSiteByDefaultCookies,SpareRendererForSitePerProcess --lang=en-US --service-sandbox-type=network --no-sandbox --enable-crash-reporter=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel --global-crash-keys=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel,_companyName=Microsoft,_productName=VSCode,_version=1.54.2 --standard-schemes=vscode-webview,vscode-webview-resource,vscode-file --secure-schemes=vscode-webview,vscode-webview-resource,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-webview-resource,vscode-file --fetch-schemes=vscode-webview,vscode-webview-resource,vscode-file --service-worker-schemes --streaming-schemes --shared-files=v8_context_snapshot_data:100
+giannos     8360  0.9  1.6 444356 65124 ?        Sl   19:23   2:18 /snap/code/58/usr/share/code/code --type=gpu-process --field-trial-handle=3397781749939279533,15945848711427992230,131072 --enable-features=WebComponentsV0Enabled --disable-features=CookiesWithoutSameSiteMustBeSecure,SameSiteByDefaultCookies,SpareRendererForSitePerProcess --disable-color-correct-rendering --no-sandbox --enable-crash-reporter=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel --global-crash-keys=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel,_companyName=Microsoft,_productName=VSCode,_version=1.54.2 --gpu-preferences=OAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA== --use-gl=swiftshader-webgl --shared-files
+giannos     8378  3.6 16.0 20030468 647856 ?     Sl   19:23   8:58 /snap/code/58/usr/share/code/code --type=renderer --disable-color-correct-rendering --no-sandbox --field-trial-handle=3397781749939279533,15945848711427992230,131072 --enable-features=WebComponentsV0Enabled --disable-features=CookiesWithoutSameSiteMustBeSecure,SameSiteByDefaultCookies,SpareRendererForSitePerProcess --disable-gpu-compositing --lang=en-US --enable-crash-reporter=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel --global-crash-keys=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel,_companyName=Microsoft,_productName=VSCode,_version=1.54.2 --standard-schemes=vscode-webview,vscode-webview-resource,vscode-file --secure-schemes=vscode-webview,vscode-webview-resource,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-webview-resource,vscode-file --fetch-schemes=vscode-webview,vscode-webview-resource,vscode-file --service-worker-schemes --streaming-schemes --app-path=/snap/code/58/usr/share/code/resources/app --node-integration --webview-tag --no-sandbox --no-zygote --native-window-open --preload=/snap/code/58/usr/share/code/resources/app/out/vs/base/parts/sandbox/electron-browser/preload.js --background-color=#1e1e1e --num-raster-threads=1 --renderer-client-id=6 --no-v8-untrusted-code-mitigations --shared-files=v8_context_snapshot_data:100
+giannos     8420  0.2  3.3 4752944 136884 ?      Sl   19:23   0:35 /snap/code/58/usr/share/code/code --inspect-port=0 /snap/code/58/usr/share/code/resources/app/out/bootstrap-fork --type=extensionHost
+giannos     8427  0.0  3.3 4785680 136460 ?      Sl   19:23   0:12 /snap/code/58/usr/share/code/code --type=renderer --disable-color-correct-rendering --no-sandbox --field-trial-handle=3397781749939279533,15945848711427992230,131072 --enable-features=WebComponentsV0Enabled --disable-features=CookiesWithoutSameSiteMustBeSecure,SameSiteByDefaultCookies,SpareRendererForSitePerProcess --disable-gpu-compositing --lang=en-US --enable-crash-reporter=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel --global-crash-keys=ee6e8535-24fa-453c-bf4c-a1d2b616fe18,no_channel,_companyName=Microsoft,_productName=VSCode,_version=1.54.2 --standard-schemes=vscode-webview,vscode-webview-resource,vscode-file --secure-schemes=vscode-webview,vscode-webview-resource,vscode-file --bypasscsp-schemes --cors-schemes=vscode-webview,vscode-webview-resource,vscode-file --fetch-schemes=vscode-webview,vscode-webview-resource,vscode-file --service-worker-schemes --streaming-schemes --app-path=/snap/code/58/usr/share/code/resources/app --node-integration --no-sandbox --no-zygote --native-window-open --preload=/snap/code/58/usr/share/code/resources/app/out/vs/base/parts/sandbox/electron-browser/preload.js --background-color=#1e1e1e --disable-blink-features=Auxclick --num-raster-threads=1 --renderer-client-id=8 --no-v8-untrusted-code-mitigations --shared-files=v8_context_snapshot_data:100
+giannos     8450  0.0  1.7 5003460 70264 ?       Sl   19:23   0:12 /snap/code/58/usr/share/code/code /snap/code/58/usr/share/code/resources/app/out/bootstrap-fork --type=ptyHost
+giannos     8527  0.3  1.3 286584 55784 ?        Sl   19:23   0:48 /usr/bin/python3 /home/giannos/.vscode/extensions/ms-python.python-2021.2.636928669/pythonFiles/pyvsc-run-isolated.py /home/giannos/.vscode/extensions/ms-python.python-2021.2.636928669/pythonFiles/completion.py
+giannos     8656  0.0  2.2 4623816 91748 ?       Sl   19:24   0:01 /snap/code/58/usr/share/code/code /snap/code/58/usr/share/code/resources/app/extensions/html-language-features/server/dist/node/htmlServerMain --node-ipc --clientProcessId=8420
+giannos     9289  0.0  1.1 957584 46348 ?        Rsl  19:47   0:05 /usr/libexec/gnome-terminal-server
+giannos     9299  0.0  0.1  11024  5172 pts/1    Ss   19:47   0:00 bash
+root       11154  0.0  0.0      0     0 ?        I    20:31   0:05 [kworker/1:2-events]
+root       12575  0.0  0.0      0     0 ?        I    22:12   0:00 [kworker/0:1-events]
+root       12657  0.0  1.3 409432 52712 ?        Ssl  22:24   0:00 /usr/libexec/fwupd/fwupd
+root       12688  0.0  0.0      0     0 ?        I    22:24   0:00 [kworker/1:1-events]
+root       12750  0.0  0.0      0     0 ?        I    22:53   0:00 [kworker/u4:0-events_unbound]
+root       12790  0.0  0.0      0     0 ?        I    23:15   0:00 [kworker/u4:2-events_power_efficient]
+giannos    12794  0.0  0.6  33872 25348 ?        S    23:18   0:00 /home/giannos/miniconda3/bin/python /home/giannos/.vscode/extensions/ms-python.python-2021.2.636928669/pythonFiles/lib/python/jedi/inference/compiled/subprocess/__main__.py /home/giannos/.vscode/extensions/ms-python.python-2021.2.636928669/pythonFiles/lib/python 3.8.5
+root       12983  0.0  0.0      0     0 ?        I    23:22   0:00 [kworker/0:0-events]
+root       13119  0.0  0.0      0     0 ?        I    23:25   0:00 [kworker/u4:1-ext4-rsv-conversion]
+giannos    13396  0.0  0.0  11488  3448 pts/1    R+   23:30   0:00 ps aux
+giannos    13397  0.0  0.0   8100   520 pts/1    R+   23:30   0:00 tee cpu_usage.txt

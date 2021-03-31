@@ -1,7 +1,7 @@
 # Here we analyze the python file *example.py* in terms of: 
-## Time
-## Memory 
-## Number of calls
+### Time
+### Memory 
+### Number of calls
 # of each function 
 
 - Profilers used:

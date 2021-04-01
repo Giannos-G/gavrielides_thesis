@@ -1,0 +1,55 @@
+Array initialized to 1 successfully
+Array created successfully
+Filename: example.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    11   18.410 MiB   18.410 MiB           1   @profile
+    12                                         def create_array():
+    13   18.410 MiB    0.000 MiB           1     arr=[]
+    14   34.195 MiB   11.297 MiB      400001     for i in range(0,400000):
+    15   34.195 MiB    4.488 MiB      400000       arr.append(i)
+    16   95.188 MiB   95.188 MiB           1     initialize_array(arr)
+
+
+Filename: example.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    19   18.930 MiB   18.930 MiB           1   @profile
+    20                                         def print_statement():
+    21   18.930 MiB    0.000 MiB           1     print('Array created successfully')
+
+
+Filename: example.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    23   34.195 MiB   34.195 MiB           1   @profile
+    24                                         def initialize_array(my_array = [], *arr):
+    25   64.570 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    26   64.570 MiB   30.375 MiB     4000000       my_array.append(0)
+    27   95.188 MiB   95.188 MiB           1     initialize_to_1_array (my_array)
+
+
+Filename: example.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    29   64.570 MiB   64.570 MiB           1   @profile
+    30                                         def initialize_to_1_array(my_array_1 = [], *my_array):
+    31   95.188 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    32   95.188 MiB   30.617 MiB     4000000       my_array_1.append(1)
+    33   95.188 MiB    0.000 MiB           1     print('Array initialized to 1 successfully')
+
+
+Filename: example.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    35   18.410 MiB   18.410 MiB           1   @profile
+    36                                         def main():
+    37   18.930 MiB   18.930 MiB           1     create_array()
+    38   18.930 MiB   18.930 MiB           1     print_statement()
+
+

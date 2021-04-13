@@ -6,3 +6,6 @@ Here we measure the time and the peak memory of a random python script. The prof
 - time_peak_mem_profiler.py 
 ### Output file:
 - Energy_Profiling_Details_CSV.csv
+### Modifier:
+- clone_and_modify.py
+- This script copies a file (bench_trees.py in this example) and modifies specific lines of the copied (or clone) file. This is done to help us accelerate the process of producing python scripts to be used in our dataset.   

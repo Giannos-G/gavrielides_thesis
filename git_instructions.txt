@@ -1,0 +1,8 @@
+git clone <url>
+(copy-paste the neccessary details, files etc)
+cd <repo>
+git status
+git add <file>
+git status
+git commit -m "Message you want to pass to the commit"
+git push origin main 

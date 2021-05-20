@@ -17,7 +17,7 @@ from sklearn.preprocessing import PolynomialFeatures
 #--------------Uploading dataset--------------
 data = pd.read_csv("/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/my_dataset.csv")
 data.drop("PyScript", inplace=True, axis=1) # Delete 1st column => filenames of samples
-"""
+
 #--------------Correlation Matrix of the original set--------------
 cor_matrix = data.corr()
 sn.heatmap(cor_matrix, annot = True)
@@ -60,7 +60,7 @@ plt.show()
 data.boxplot(['Memory(MB)', 'Time(s)', 'Energy(Joule)'])
 plt.ylim(0, 350)
 plt.title('Boxplot of the original data')
-plt.show()"""
+plt.show()
 
 #------------------Remove the outliers------------------
 Q1 = data.quantile(0.4)
@@ -69,11 +69,11 @@ IQR = Q3 - Q1
 #print (IQR)
 data_out = data[~((data < (Q1-1.5*IQR)) | (data > (Q3 +1.5*IQR))).any(axis=1)]
 #print (data_out)
-"""
+
 #------------------Boxplot of the new data------------------
 data_out.boxplot(['Memory(MB)', 'Time(s)', 'Energy(Joule)'])
 plt.title('Boxplot of the new data')
-plt.show()"""
+plt.show()
 
 #------------------Set data equals to new_data------------------
 data = data_out.copy()
@@ -241,4 +241,5 @@ plt.bar(y_pos, errors)
 plt.xticks(y_pos, methods, rotation = 90, size = 8)
 plt.subplots_adjust(bottom=0.35)
 plt.ylim(145,160)
+plt.title('Barplot of MS Errors')
 plt.show()

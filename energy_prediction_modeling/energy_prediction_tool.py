@@ -243,3 +243,41 @@ plt.subplots_adjust(bottom=0.35)
 plt.ylim(145,160)
 plt.title('Barplot of MS Errors')
 plt.show()
+
+#--------------Predicted and Actual Values--------------
+plt.title('Predicted and Actual Values')
+my_x_axis = []
+for i in range(0,len(y_pred_pl_test)):
+        my_x_axis.append(i)
+
+plt.scatter(my_x_axis, y_test, color = 'red', label = 'Actual Values')
+plt.scatter(my_x_axis, y_pred_pl_test, color = 'blue', label = 'Predicted Values')
+plt.legend(loc = 'upper left')
+plt.xlabel('Test Case')
+plt.ylabel('Energy(Joule)')
+plt.show()
+
+#--------------Predicted and Actual Values Columns--------------
+x = np.arange(len(my_x_axis))
+width = 0.35
+fig, ax = plt.subplots()
+rects1 = ax.bar(x-width/2, y_test, width, label = "Actual Values")
+rects2 = ax.bar(x+width/2, y_pred_pl_test, width, label = "Predicted Values")
+
+ax.set_ylabel('Energy(Joules)')
+ax.set_title('Predicted and Actual Values')
+ax.set_xticks(x)
+ax.set_xticklabels(my_x_axis)
+ax.legend()
+
+ax.bar_label(rects1, padding=3)
+ax.bar_label(rects2, padding=3)
+fig.tight_layout()
+plt.show()
+
+#--------------Predicted and Actual Values Error--------------
+plt.stem(my_x_axis, abs(y_pred_pl_test-y_test))
+plt.title('Absolute Actual Error')
+plt.ylabel('Energy(Joule)')
+plt.xlabel('Test Case')
+plt.show()

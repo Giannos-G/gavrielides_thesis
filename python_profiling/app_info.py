@@ -1,4 +1,5 @@
 import csv
+import os
 from prettytable import PrettyTable
 filename = "example.py"
 
@@ -150,8 +151,9 @@ def main():
     LL = LinkedList()
 
     # Open the txt files
-    memory_profiler = open(r"/home/giannos/Desktop/giannos_thesis/python_profiling/Memory_Profiling.txt", "r")
-    time_profiler = open(r"/home/giannos/Desktop/giannos_thesis/python_profiling/Time_Profiling.txt", "r")
+    ##################os.system("python -m memory_profiler example.py")
+    memory_profiler = open(r"./Memory_Profiling.txt", "r")
+    time_profiler = open(r"./Time_Profiling.txt", "r")
     
     # Call search_and_create to create the list 
     search_and_create(memory_profiler, time_profiler, LL)
@@ -170,7 +172,7 @@ def main():
     print(t)
 
     current = LL.head
-    with open('/home/giannos/Desktop/giannos_thesis/python_profiling/App_Info_Output_File_CSV.csv', 'w', newline='')as f:
+    with open('./App_Info_Output_File_CSV.csv', 'w', newline='')as f:
         thewriter=csv.writer(f)
         thewriter.writerow(['Name', 'Memory', 'Time', 'nCalls'])
         while (current):

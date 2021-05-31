@@ -1,6 +1,6 @@
 # Dummy Code containing multiple functions
 
-#import cProfile
+import cProfile
 
 #@profile
 def create_array():
@@ -33,6 +33,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
-    #cProfile.run('main()')
+    #main()
+    cProfile.run('main()')
     

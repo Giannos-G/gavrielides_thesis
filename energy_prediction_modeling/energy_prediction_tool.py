@@ -63,8 +63,8 @@ plt.title('Boxplot of the original data')
 plt.show()
 
 #------------------Remove the outliers------------------
-Q1 = data.quantile(0.4)
-Q3 = data.quantile(0.6)
+Q1 = data.quantile(0.25)
+Q3 = data.quantile(0.75)
 IQR = Q3 - Q1
 #print (IQR)
 data_out = data[~((data < (Q1-1.5*IQR)) | (data > (Q3 +1.5*IQR))).any(axis=1)]
@@ -77,12 +77,12 @@ plt.show()
 
 #------------------Set data equals to new_data------------------
 data = data_out.copy()
-"""
+
 #--------------Correlation Matrix of the new dataset--------------
 cor_matrix = data.corr()
 sn.heatmap(cor_matrix, annot = True)
 plt.title('Correlation Matrix of the New Dataset')
-plt.show()"""
+plt.show()
 
 #--------------Construct the target column--------------
 train_target = data['Energy(Joule)']
@@ -240,7 +240,7 @@ y_pos = np.arange(len(methods))
 plt.bar(y_pos, errors)
 plt.xticks(y_pos, methods, rotation = 90, size = 8)
 plt.subplots_adjust(bottom=0.35)
-plt.ylim(145,160)
+plt.ylim(450,2100)
 plt.title('Barplot of MS Errors')
 plt.show()
 

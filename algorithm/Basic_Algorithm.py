@@ -1,5 +1,8 @@
 import csv
+from os import read
 import numpy as np
+from numpy.lib.function_base import interp
+
 
 def GetClusterDetails():
     nodes_number = input("Please insert the number of nodes in your cluster: \n")
@@ -41,28 +44,27 @@ def GetWeightsArray():
     return return_table
 
 
-""" def GetNodeResources():
+def GetNodeResources():
     # Each Nodes resources limit
-    # [Memory, CPU?????????????????]
-    file = open ("")
+    # [Memory, CPU]
+    file = open ("/home/giannos-g/Desktop/gavrielides_thesis/cpu_mem_usage/Cluster_Details_CSV.csv")
     table = []
     for line in file:
         row = []
-        for part in line.split(","):
-            row.append(part[0])         # Energy column
-            row.append(part[1])         # CPU Column
-        
+        for part in line.split(','):
+            x = line.split(',')
+            row.append(part)         # Energy column & CPU Column            
+
         table.append(row)
 
     return_table = np.delete(table,0,0)             # Delete the first row
     file.close()
-    table = table.astype(float)
+    return_table = return_table.astype(float)
     return return_table
-    #return 1D ????? array  """
 
-def initialize_x_array(nodes, functions):
-    table = []
-    var = 0
+def initialize_x_array(nodes, functions):       # Columns = No.OfNodes
+    table = []                                  # Rows = No.OfFunctions
+    var = 1
     for r in range(int(functions)):
         row = []
         for c in range(int(nodes)):
@@ -72,38 +74,84 @@ def initialize_x_array(nodes, functions):
     return table
 
 def GetEnergyForEachFunction():
-    file = open("")
-    energy_of_each_function = []
+    predictions_table = []
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+        for line in f:
+            part = line.split(',')
+            prediction_row = [part[0], part[1]]
+            predictions_table.append(prediction_row) #part[0] = name of functions
 
-    return energy_of_each_function
+    predictions_table= np.delete(predictions_table, 0, 0)               # Delete the first row
 
-def GetEnergyOnEachNode():
-    file = open("")                 # Get energy from trained model - prediction
-    energy_on_nodes_table = []
+    #predictions_table = predictions_table.astype(float)
 
-    return energy_on_nodes_table
+    return predictions_table        # This is a 2D array
+
+    # #file = open("")                 # Get energy from trained model - prediction
+    # file = open("/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv")
+    # for line in file:
+    #     reader = line.split()
+    #     print(reader)
+    #     energy = reader[0]
+    # #print("ENERGY = ", energy)
+    # energy_of_each_function = []
+    # # Dummy Initialization
+    # table = []                                  # Rows = No.OfNodes
+    # var = 0                                     # Columns = 1
+    # for r in range(1):
+    #     row = []
+    #     for c in range(int(functions)):
+    #         row.append(var)
+    #     table.append(row)
+
+    # return table
+
+def Manipulate_function_energy():
+    predictions_table = []
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+        for line in f:
+            part = line.split(',')
+            prediction_row = [part[1]]
+            predictions_table.append(prediction_row) #part[0] = name of functions
+
+    predictions_table= np.delete(predictions_table, 0, 0)               # Delete the first row
+
+    predictions_table = predictions_table.astype(float)
+
+    return predictions_table.T
 
 
-def GetTotalEnergy(node_array):
-    total_energy =0
+def GetTotalEnergyMatrix(energy_array, x_array, nodes):     # Sum of energy of each node
+    total_energy = np.matmul(energy_array, x_array)
+    
+    return total_energy
 
-    for i in node_array:
-        total_energy += node_array[i]
 
-    return  total_energy
+def GetTotalEnergy(energy_array, nodes):
+    tot_energy = 0
+    for r in range(int(nodes)):
+        tot_energy += energy_array[0][r]
+
+    return tot_energy
 
 
 def main():
     number_of_nodes = GetClusterDetails()               # m
     number_of_functions = GetNumberOfFunctions()        # n
-    print("The number of functions is:", number_of_functions, "\n")
+    print("You have: ", number_of_functions, " functions to be destributed to, ", number_of_nodes, " nodes \n")
     weights = GetWeightsArray()
     print("Weights: \n", weights)
-    #node_resources = GetNodeResources()
+    node_resources = GetNodeResources()
+    print ("Nodes Resources: \n", node_resources)
     x_init = initialize_x_array(number_of_nodes, number_of_functions)
+    print ("Initialized array: \n", x_init)
     function_energy = GetEnergyForEachFunction()
-    node_energy_array = GetEnergyOnEachNode()
-    total_energy = GetTotalEnergy(node_energy_array)
+    function_energy_only_energy_column = Manipulate_function_energy()
+    print ("This is the 1D Array: \n", function_energy_only_energy_column)
+    total_energy_matrix = GetTotalEnergyMatrix(function_energy_only_energy_column, x_init, number_of_nodes)
+    print("Total Energy Matrix: \n", total_energy_matrix)
+    total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes)
+    print("Total Energy = ", total_energy)
     
 
 if __name__ == "__main__":

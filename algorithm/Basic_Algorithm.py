@@ -81,7 +81,7 @@ def RandomlyFillTable(my_table, nodes, functions, nodes_resources, weights):
     
     for r in range(nodes):                      # number of nodes / columns of the table
         choice_sequence.append(r)
-    print ("Choice sequence: \n", choice_sequence)
+    #print ("Choice sequence: \n", choice_sequence)
     
     # Let's fill the table
     for r in range(functions):
@@ -94,6 +94,49 @@ def RandomlyFillTable(my_table, nodes, functions, nodes_resources, weights):
             nodes_resources[random_node_choice][1] = nodes_resources[random_node_choice][1] - weights[r][0]      
 
     return my_table
+
+def GetCommunications(functions):
+    #Initialize the communications table
+    communications_table = []                                  # Rows = No.OfFunctions
+    var = 0                                                    # Columns = No.OfFunctions
+    for r in range(int(functions)):
+        row = []
+        for c in range(int(functions)):
+            row.append(var)
+        communications_table.append(row)
+    # Lets fill it 
+    i = 0 
+    functions_table = []
+    read_communications_table = []
+    source_functions_file = open('/home/giannos-g/Desktop/gavrielides_thesis/python_profiling/App_Info_Output_File_CSV.csv')
+    communications_file = open('/home/giannos-g/Desktop/gavrielides_thesis/python_profiling/Calls_Details_CSV.csv')
+    for line in source_functions_file:
+        part = line.split(",")
+        function_name = part[0]    
+        functions_table.append(function_name)
+    functions_table = np.delete(functions_table, 0, 0)      # delete first row
+    
+    rows = 0        # rows of the communications file
+    for line in communications_file:
+        row =[]
+        part = line.split('\n')                 #each line
+        # I need part[0] =>  has the 3 values 
+        part2 = part[0].split(',')
+        row.append(part2[0])
+        row.append(part2[1])
+        row.append(part2[2])
+        read_communications_table.append(row)
+        rows+=1
+  
+    read_communications_table = np.delete(read_communications_table, 0, 0)
+    rows+=-1
+    
+    for i in range (0,functions):
+        for j in range (0,rows-1):
+            if (functions_table[i] == read_communications_table[j][0]):     # found the function
+                communications_table[i][j+1] = int(read_communications_table[j][2])
+
+    return communications_table 
 
 def GetEnergyForEachFunction():
     predictions_table = []
@@ -147,14 +190,36 @@ def GetTotalEnergyMatrix(energy_array, x_array, nodes):     # Sum of energy of e
     
     return total_energy
 
-def GetTotalEnergy(energy_array, nodes):
+def GetCostOfCommunications(communications, map_table,functions,nodes):
+    total_cost_of_communication = 0
+    for i in range (functions):
+        for j in range (functions):
+            if (communications[i][j] != 0):
+                # Check where each one is executed:
+                for jj in range (nodes):
+                    if (map_table[i][jj] == map_table[j][jj] ):      # they are executed on the same node
+                        #print ("They are executed on the same one")
+                        total_cost_of_communication += communications[i][j] * 5     # Assumption = 5
+                        break
+                    else:
+                        #print (("They are NOT executed on the same one"))
+                        total_cost_of_communication += communications[i][j] * 20     # Assumption = 20 
+                        break
+
+    return total_cost_of_communication
+
+def GetTotalEnergy(energy_array, nodes, communication_cost):
     tot_energy = 0
     for r in range(int(nodes)):
         tot_energy += energy_array[0][r]
 
+    tot_energy += communication_cost
+
     return tot_energy
 
 def main():
+    #iterations = input("Set the number of iterations \n")
+    iterations = 10
     Total_Energy = 0
     number_of_nodes = GetClusterDetails()               # m
     number_of_functions = GetNumberOfFunctions()        # n
@@ -173,7 +238,7 @@ def main():
     #print("Total Energy Matrix: \n", total_energy_matrix)
     #total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes)
     #print("Total Energy = ", total_energy)
-    for i in range (5):
+    for i in range (iterations):
         
         node_resources = GetNodeResources(number_of_nodes)
         x_init = initialize_x_array(number_of_nodes, number_of_functions)
@@ -181,8 +246,10 @@ def main():
         function_energy = GetEnergyForEachFunction()
         function_energy_only_energy_column = Manipulate_function_energy()
         total_energy_matrix = GetTotalEnergyMatrix(function_energy_only_energy_column, x_init, number_of_nodes)
-        total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes)
-        print("Total Energy = ", total_energy)
+        communications = GetCommunications(number_of_functions)
+        cost_of_communications = GetCostOfCommunications(communications, map_table, number_of_functions, number_of_nodes)
+        total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes, cost_of_communications)
+        print("Total Energy for iteration ", i," = ", total_energy, "(Joule)")
 
         if (i == 0):
             Total_Energy = total_energy
@@ -193,9 +260,10 @@ def main():
             Final_Map_Array = map_table
             Total_Energy = total_energy
 
-    print ("The best Array is: \n", Final_Map_Array)
-    print ("The lowest energy is: \n" , Total_Energy)
-    print ("The final Nodes Resources for the best case is: \n", Final_Node_Resources)
+    print ("Iterations: ", iterations)
+    print ("The best Map Array is: \n", Final_Map_Array)
+    print ("The lowest energy using the best Map Array is: \n" , Total_Energy, "(Joule)")
+    #print ("The final Nodes Resources for the best case is: \n", Final_Node_Resources)
 
 if __name__ == "__main__":
     main()

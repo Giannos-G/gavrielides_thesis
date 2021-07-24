@@ -5,12 +5,33 @@ from numpy.lib.function_base import interp
 import random
 
 
-def GetClusterDetails():
-    nodes_number = input("Please insert the number of nodes in your cluster: \n")
-    #print(f'You entered {nodes_number} and its type is {type(nodes_number)}')
-    nodes_number = int(nodes_number)
+
+def GetNanoDetails():
+    nano_number = input("Please insert the number of Nano nodes in your cluster: \n")
+    nano_number = int(nano_number)
+
+    return nano_number
+
+def GetJetsonDetails():
+    jetson_number = input("Please insert the number of Jetson nodes in your cluster: \n")
+    jetson_number = int(jetson_number)
+
+    return jetson_number
+
+def GetUnoDetails():
+    uno_number = input("Please insert the number of Uno nodes in your cluster: \n")
+    uno_number = int(uno_number)
+
+    return uno_number
+
+def GetClusterDetails(nano, jetson, uno):    # Enter the number of nodes of each chip
+    # nano = GetNanoDetails()
+    # jetson = GetJetsonDetails()
+    # uno = GetUnoDetails()
+
+    sumof_nodes_number = nano + jetson + uno
     
-    return nodes_number
+    return sumof_nodes_number
 
 def GetNumberOfFunctions():
     file = open("/home/giannos-g/Desktop/gavrielides_thesis/python_profiling/App_Info_Output_File_CSV.csv")
@@ -44,7 +65,7 @@ def GetWeightsArray():
     
     return return_table
 
-def GetNodeResources(nodes):
+def GetNodeResources(nodes):        # Assumption: Every node has the same Resources
     # Each Nodes resources limit
     # [Memory, CPU Utilization]
     file = open ("/home/giannos-g/Desktop/gavrielides_thesis/cpu_mem_usage/Cluster_Details_CSV.csv")
@@ -92,7 +113,7 @@ def RandomlyFillTable(my_table, nodes, functions, nodes_resources, weights):
                                                                                  # All nodes have the same available memory
             my_table[r][random_node_choice] = 1
             nodes_resources[random_node_choice][1] = nodes_resources[random_node_choice][1] - weights[r][0]      
-
+    
     return my_table
 
 def GetCommunications(functions):
@@ -138,7 +159,9 @@ def GetCommunications(functions):
 
     return communications_table 
 
-def GetEnergyForEachFunction():
+
+
+def GetEnergyForEachFunction_on_Nano():   #NOT USED
     predictions_table = []
     with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
         for line in f:
@@ -152,9 +175,58 @@ def GetEnergyForEachFunction():
 
     return predictions_table        # This is a 2D array
 
-
-def Manipulate_function_energy():
+def GetEnergyForEachFunction_on_Jetson():   #NOT USED
     predictions_table = []
+    # OPEN THE CORRECT FILE
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+        for line in f:
+            part = line.split(',')
+            prediction_row = [part[0], part[1]]
+            predictions_table.append(prediction_row) #part[0] = name of functions
+
+    predictions_table= np.delete(predictions_table, 0, 0)               # Delete the first row
+
+    #predictions_table = predictions_table.astype(float)
+
+    return predictions_table        # This is a 2D array
+
+def GetEnergyForEachFunction_on_Uno():      #NOT USED
+    predictions_table = []
+    # OPEN THE CORRECT FILE
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+        for line in f:
+            part = line.split(',')
+            prediction_row = [part[0], part[1]]
+            predictions_table.append(prediction_row) #part[0] = name of functions
+
+    predictions_table= np.delete(predictions_table, 0, 0)               # Delete the first row
+
+    #predictions_table = predictions_table.astype(float)
+
+    return predictions_table        # This is a 2D array
+
+
+
+def Energy_Prediction_Table_on_Nano():
+    predictions_table = []    
+    # Prediction for Nano
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+        for line in f:
+            part = line.split(',')
+            prediction_row = [part[1]]
+            predictions_table.append(prediction_row) #part[0] = name of functions
+
+    predictions_table= np.delete(predictions_table, 0, 0)               # Delete the first row
+
+    predictions_table = predictions_table.astype(float)
+    
+
+    return predictions_table.T
+
+def Energy_Prediction_Table_on_Jetson():
+    predictions_table = []    
+    # Prediction for Jetson
+    # CORRECT THE FILE
     with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
@@ -167,12 +239,79 @@ def Manipulate_function_energy():
 
     return predictions_table.T
 
-def GetTotalEnergyMatrix(energy_array, x_array, nodes):     # Sum of energy of each node
-    total_energy = np.matmul(energy_array, x_array)
+def Energy_Prediction_Table_on_Uno():
+    predictions_table = []    
+    # Prediction for Uno
+    # CORRECT THE FILE
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+        for line in f:
+            part = line.split(',')
+            prediction_row = [part[1]]
+            predictions_table.append(prediction_row) #part[0] = name of functions
+
+    predictions_table= np.delete(predictions_table, 0, 0)               # Delete the first row
+
+    predictions_table = predictions_table.astype(float)
+
+    return predictions_table.T
+
+def GetTotalEnergyMatrix(energy_array_nano,energy_array_jetson,energy_array_uno, map_table, number_of_nano,number_of_jetson,number_of_uno):     # Sum of energy of each node
+    # Split the main map table into 3 others, one for each type of node
+    functions = GetNumberOfFunctions()
+    # Nano Map Table
+    nano_map_table = []
+    row = []
+    for i in range(0,functions ):
+
+        for j in range(0,number_of_nano):
+            row.append(map_table[i][j])
+        
+        nano_map_table.append(row)
+        row = []
+    ###################################
+
+    # Jetson Map Table
+    jetson_map_table = []
+    row = []
+    for i in range(0,functions ):
+
+        for j in range(number_of_nano,(number_of_nano + number_of_jetson)):
+            row.append(map_table[i][j])
+        
+        jetson_map_table.append(row)
+        row = []
+    ###################################
+
+    # Uno Map Table
+    uno_map_table = []
+    row = []
+    for i in range(0,functions ):
+
+        for j in range((number_of_jetson+number_of_nano),(number_of_jetson +number_of_nano + number_of_uno)):
+            row.append(map_table[i][j])
+        
+        uno_map_table.append(row)
+        row = []
+    ###################################
+
+    total_energy_on_each_nano_node = np.matmul(energy_array_nano, nano_map_table)
+    total_energy_on_each_jetson_node = np.matmul(energy_array_jetson, jetson_map_table)
+    total_energy_on_each_uno_node = np.matmul(energy_array_uno, uno_map_table)
     
+    # print("Nano Map Table:\n", nano_map_table)
+    # print("Jetson Map Table:\n", jetson_map_table)
+    # print("Uno Map Table:\n", uno_map_table)
+
+    # print ("Nano Total Energy Table:\n", total_energy_on_each_nano_node)
+    # print ("Jetson Total Energy Table:\n", total_energy_on_each_jetson_node)
+    # print ("Uno Total Energy Table:\n", total_energy_on_each_uno_node)
+
+    total_energy = np.append(total_energy_on_each_nano_node,total_energy_on_each_jetson_node)
+    total_energy = np.append(total_energy, total_energy_on_each_uno_node)
+
     return total_energy
 
-def GetCostOfCommunications(communications, map_table,functions,nodes):
+def GetCostOfCommunications(communications, map_table,functions,nodes): # Every node has the same cost 
     total_cost_of_communication = 0
     for i in range (functions):
         for j in range (functions):
@@ -193,30 +332,38 @@ def GetCostOfCommunications(communications, map_table,functions,nodes):
 def GetTotalEnergy(energy_array, nodes, communication_cost):
     tot_energy = 0
     for r in range(int(nodes)):
-        tot_energy += energy_array[0][r]
+        tot_energy += energy_array[r]
 
     tot_energy += communication_cost
-
     return tot_energy
 
 def main():
     #iterations = input("Set the number of iterations \n")
-    iterations = 50
+    iterations = 5
     Total_Energy = 0
-    number_of_nodes = GetClusterDetails()               # m
+    number_of_nano_nodes = GetNanoDetails()
+    number_of_jetson_nodes = GetJetsonDetails()
+    number_of_uno_nodes = GetUnoDetails()
+    number_of_nodes = GetClusterDetails(number_of_nano_nodes, number_of_jetson_nodes, number_of_uno_nodes)               # m
     number_of_functions = GetNumberOfFunctions()        # n
     print("You have: ", number_of_functions, " functions to be destributed to, ", number_of_nodes, " nodes \n")
     weights = GetWeightsArray()
     print("Weights: \n","Memory, Time, No.Calls \n", weights)
+    
     # Lets start trying combinations
     for i in range (iterations):
         
         node_resources = GetNodeResources(number_of_nodes)
         x_init = initialize_x_array(number_of_nodes, number_of_functions)
         map_table = RandomlyFillTable(x_init,number_of_nodes, number_of_functions, node_resources, weights)
-        function_energy = GetEnergyForEachFunction()
-        function_energy_only_energy_column = Manipulate_function_energy()
-        total_energy_matrix = GetTotalEnergyMatrix(function_energy_only_energy_column, x_init, number_of_nodes)
+        #function_energy_on_Nano = GetEnergyForEachFunction_on_Nano()
+        function_energy_only_energy_column_nano = Energy_Prediction_Table_on_Nano()
+        function_energy_only_energy_column_jetson = Energy_Prediction_Table_on_Jetson()
+        function_energy_only_energy_column_uno = Energy_Prediction_Table_on_Uno()
+        total_energy_matrix = GetTotalEnergyMatrix(function_energy_only_energy_column_nano,
+                                                    function_energy_only_energy_column_jetson,
+                                                    function_energy_only_energy_column_uno, map_table, number_of_nano_nodes, 
+                                                    number_of_jetson_nodes, number_of_uno_nodes)
         communications = GetCommunications(number_of_functions)
         cost_of_communications = GetCostOfCommunications(communications, map_table, number_of_functions, number_of_nodes)
         total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes, cost_of_communications)

@@ -226,8 +226,7 @@ def Energy_Prediction_Table_on_Nano():
 def Energy_Prediction_Table_on_Jetson():
     predictions_table = []    
     # Prediction for Jetson
-    # CORRECT THE FILE
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Jetson_xavier_nx_00/Predictions_jetson_xavier_nx_00.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]

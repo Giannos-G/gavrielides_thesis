@@ -63,8 +63,8 @@ plt.title('Boxplot of the original data')
 plt.show()
 
 #------------------Remove the outliers------------------
-Q1 = data.quantile(0.35)
-Q3 = data.quantile(0.65)
+Q1 = data.quantile(0.35) #35
+Q3 = data.quantile(0.65) #65
 IQR = Q3 - Q1
 #print (IQR)
 data_out = data[~((data < (Q1-1.5*IQR)) | (data > (Q3 +1.5*IQR))).any(axis=1)]
@@ -245,13 +245,13 @@ plt.title('Barplot of MS Errors')
 plt.show()
 
 #--------------Predicted and Actual Values--------------
-plt.title('Predicted and Actual Values using Decision Tree Regression')
+plt.title('Predicted and Actual Values using Random Forest Regression')
 my_x_axis = []
-for i in range(0,len(y_pred_dt_test)):
+for i in range(0,len(y_pred_rf_test)):
         my_x_axis.append(i)
 
 plt.scatter(my_x_axis, y_test, color = 'red', label = 'Actual Values')
-plt.scatter(my_x_axis, y_pred_dt_test, color = 'blue', label = 'Predicted Values')
+plt.scatter(my_x_axis, y_pred_rf_test, color = 'blue', label = 'Predicted Values')
 plt.legend(loc = 'upper left')
 plt.xlabel('Test Case')
 plt.ylabel('Time on Jetson(s)')
@@ -262,10 +262,10 @@ x = np.arange(len(my_x_axis))
 width = 0.35
 fig, ax = plt.subplots()
 rects1 = ax.bar(x-width/2, y_test, width, label = "Actual Values")
-rects2 = ax.bar(x+width/2, y_pred_dt_test, width, label = "Predicted Values")
+rects2 = ax.bar(x+width/2, y_pred_rf_test, width, label = "Predicted Values")
 
 ax.set_ylabel('Time on Jetson(s)')
-ax.set_title('Predicted and Actual Values using Decision Tree Regression')
+ax.set_title('Predicted and Actual Values using Random Forest Regression')
 ax.set_xticks(x)
 ax.set_xticklabels(my_x_axis)
 ax.legend()
@@ -276,8 +276,8 @@ fig.tight_layout()
 plt.show()
 
 #--------------Predicted and Actual Values Error--------------
-plt.stem(my_x_axis, abs(y_pred_dt_test-y_test))
-plt.title('Absolute Actual Error using Decision Tree Regression')
+plt.stem(my_x_axis, abs(y_pred_rf_test-y_test))
+plt.title('Absolute Actual Error using Random Forest Regression')
 plt.ylabel('Time on Jetson(s)')
 plt.xlabel('Test Case')
 plt.show()

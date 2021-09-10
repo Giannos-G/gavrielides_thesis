@@ -7,6 +7,7 @@ import numpy as np
 
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 def main():
     #--------------Uploading dataset--------------
@@ -29,8 +30,8 @@ def main():
     data.drop("Time on Jetson(s)", inplace=True, axis=1)
     #===============================================================================
     #--------------Linear Regression-------------- 
-    dt = DecisionTreeRegressor()
-    dt.fit(data, target_column)
+    rf = RandomForestRegressor()
+    rf.fit(data, target_column)
 
     #--------------Predict data--------------
     predict_table = []
@@ -49,8 +50,8 @@ def main():
 
     predict_table = predict_table.astype(float)
 
-    y_pred_dt_test = dt.predict(predict_table)
-    y_pred_dt_test = abs(y_pred_dt_test)
+    y_pred_rf_test = rf.predict(predict_table)
+    y_pred_rf_test = abs(y_pred_rf_test)
 
     # Get number of functions
     file = open("/home/giannos-g/Desktop/gavrielides_thesis/python_profiling/App_Info_Output_File_CSV.csv")
@@ -61,14 +62,14 @@ def main():
     number_of_functions = int(number_of_functions)
 
     for i in range(number_of_functions):
-        print("My time prediction for function--> ", info_table[i][0], "<-- on Jetson is: \n", y_pred_dt_test[i],"(s)")
+        print("My time prediction for function--> ", info_table[i][0], "<-- on Jetson is: \n", y_pred_rf_test[i],"(s)")
 
     with open('/home/giannos-g/Desktop/gavrielides_thesis/time_prediction_modeling/Jetson/Time_Predictions_on_Jetson.csv', 'w', newline='')as f:
         thewriter=csv.writer(f)
         thewriter.writerow(['Function Name', 'Time on Jetson Prediction (s)'])
         for i in range(number_of_functions):
             print(info_table[i][0])
-            thewriter.writerow([info_table[i][0], y_pred_dt_test[i]])
+            thewriter.writerow([info_table[i][0], y_pred_rf_test[i]])
 
 
 if __name__ == "__main__":

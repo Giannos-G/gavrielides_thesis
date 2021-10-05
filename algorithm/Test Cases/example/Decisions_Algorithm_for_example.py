@@ -5,7 +5,7 @@ from numpy.lib.function_base import interp
 import random
 
 
-Expected_Total_Time = 0
+Expected_Total_Time = 0.0
 
 def GetTimeThreshold():
     time_threshold = input("Please insert the time threshold (s) of your choice: \n")
@@ -20,7 +20,7 @@ def GetNanoDetails():
     return nano_number
 
 def GetJetsonDetails():
-    jetson_number = input("Please insert the number of Jetson nodes in your cluster: \n")
+    jetson_number = input("Please insert the number of Xavier nodes in your cluster: \n")
     jetson_number = int(jetson_number)
 
     return jetson_number

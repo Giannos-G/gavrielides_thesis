@@ -20,7 +20,7 @@ def GetNanoDetails():
     return nano_number
 
 def GetJetsonDetails():
-    jetson_number = input("Please insert the number of Jetson nodes in your cluster: \n")
+    jetson_number = input("Please insert the number of Xavier nodes in your cluster: \n")
     jetson_number = int(jetson_number)
 
     return jetson_number

@@ -363,7 +363,7 @@ def GetTotalTime(time_on_nano_table, time_on_jetson_table,nano_nodes, jetson_nod
 
 def main():
     #iterations = input("Set the number of iterations \n")
-    iterations = 1000
+    iterations = 10000
     Total_Energy = 0
     Best_Expected_Total_Time = 0
     Time_threshold = GetTimeThreshold()

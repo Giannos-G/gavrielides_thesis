@@ -1,0 +1,19 @@
+Array initialized to 1 successfully
+Array created successfully
+         8400010 function calls in 1.888 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    1.888    1.888 <string>:1(<module>)
+        1    0.112    0.112    1.865    1.865 example.py:11(create_array)
+        1    0.000    0.000    0.000    0.000 example.py:19(print_statement)
+        1    0.625    0.625    1.693    1.693 example.py:23(initialize_array)
+        1    0.488    0.488    0.743    0.743 example.py:29(initialize_to_1_array)
+        1    0.024    0.024    1.888    1.888 example.py:35(main)
+        1    0.000    0.000    1.888    1.888 {built-in method builtins.exec}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+  8400000    0.640    0.000    0.640    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

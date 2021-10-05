@@ -1,0 +1,16 @@
+Name,Memory,Time,nCalls
+main,197.632,0.110,1
+initialize_to_6_array,784.77,10.013,1
+initialize_to_5_array,955.094,8.684,1
+initialize_to_4_array,864.425,8.648,1
+initialize_to_3_array,773.1589999999999,8.717,1
+initialize_to_2_array,681.2629999999999,8.682,1
+initialize_to_1_array,589.997,8.690,1
+initialize_array,419.29999999999995,8.902,1
+print_statement,32.77,0.000,1
+multiply_arrays_4,132.092,0.000,1
+multiply_arrays_3,132.092,0.000,1
+multiply_arrays_2,132.092,0.000,1
+multiply_arrays_1,131.586,0.000,1
+create_two_dimensions_array,264.184,0.175,8
+create_array,391.39199999999994,0.873,1

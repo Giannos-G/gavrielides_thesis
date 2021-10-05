@@ -1,0 +1,6 @@
+Function Name,Time on Jetson Prediction (s)
+main,3.8131403079430264
+initialize_to_1_array,4.36128146648407
+initialize_array,4.285223808288574
+print_statement,3.8131403079430264
+create_array,4.355652506351471

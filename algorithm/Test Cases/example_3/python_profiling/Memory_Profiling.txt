@@ -1,0 +1,195 @@
+Array initialized to 1 successfully
+Array initialized to 2 successfully
+Array initialized to 3 successfully
+Array initialized to 4 successfully
+Array initialized to 5 successfully
+Array initialized to 6 successfully
+Array created successfully
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+     6   32.848 MiB   32.848 MiB           1   @profile
+     7                                         def create_array():
+     8   32.848 MiB    0.000 MiB           1     arr=[]
+     9   48.477 MiB  -96.395 MiB      400001     for i in range(0,400000):
+    10   48.477 MiB  -80.719 MiB      400000       arr.append(i)
+    11  261.590 MiB  261.590 MiB           1     initialize_array(arr)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    13   33.023 MiB  263.680 MiB           8   @profile
+    14                                         def create_two_dimensions_array():
+    15   33.023 MiB    0.000 MiB           8     arr_1=[]
+    16   33.023 MiB    0.000 MiB           8     arr = []
+    17   33.023 MiB    0.000 MiB         808     for i in range(0,100):
+    18                                         
+    19   33.023 MiB    0.000 MiB       80800       for j in range (0,100):
+    20   33.023 MiB    0.000 MiB       80000         arr_1.append(j)
+    21                                         
+    22   33.023 MiB    0.000 MiB         800       arr.append(arr_1)
+    23   33.023 MiB    0.000 MiB         800       arr_1=[]
+    24                                           
+    25   33.023 MiB    0.000 MiB           8     return arr
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    27   32.770 MiB   32.770 MiB           1   @profile
+    28                                         def multiply_arrays_1():
+    29   32.770 MiB   32.770 MiB           1     array1 = create_two_dimensions_array()
+    30   32.770 MiB   32.770 MiB           1     array2 = create_two_dimensions_array()
+    31   33.023 MiB    0.254 MiB           1     result = np.dot(array1, array2)
+    32   33.023 MiB    0.000 MiB           1     print ("Arrays have been multiplied")
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    34   33.023 MiB   33.023 MiB           1   @profile
+    35                                         def multiply_arrays_2():
+    36   33.023 MiB   33.023 MiB           1     array1 = create_two_dimensions_array()
+    37   33.023 MiB   33.023 MiB           1     array2 = create_two_dimensions_array()
+    38   33.023 MiB    0.000 MiB           1     result = np.dot(array1, array2)
+    39   33.023 MiB    0.000 MiB           1     print ("Arrays have been multiplied")
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    41   33.023 MiB   33.023 MiB           1   @profile
+    42                                         def multiply_arrays_3():
+    43   33.023 MiB   33.023 MiB           1     array1 = create_two_dimensions_array()
+    44   33.023 MiB   33.023 MiB           1     array2 = create_two_dimensions_array()
+    45   33.023 MiB    0.000 MiB           1     result = np.dot(array1, array2)
+    46   33.023 MiB    0.000 MiB           1     print ("Arrays have been multiplied")
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    48   33.023 MiB   33.023 MiB           1   @profile
+    49                                         def multiply_arrays_4():
+    50   33.023 MiB   33.023 MiB           1     array1 = create_two_dimensions_array()
+    51   33.023 MiB   33.023 MiB           1     array2 = create_two_dimensions_array()
+    52   33.023 MiB    0.000 MiB           1     result = np.dot(array1, array2)
+    53   33.023 MiB    0.000 MiB           1     print ("Arrays have been multiplied")
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    55   32.770 MiB   32.770 MiB           1   @profile
+    56                                         def print_statement():
+    57   32.770 MiB    0.000 MiB           1     print('Array created successfully')
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    59   48.477 MiB   48.477 MiB           1   @profile
+    60                                         def initialize_array(my_array = [], *arr):
+    61   78.855 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    62   78.855 MiB   30.379 MiB     4000000       my_array.append(0)
+    63  261.590 MiB  261.590 MiB           1     initialize_to_1_array (my_array)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    65   78.855 MiB   78.855 MiB           1   @profile
+    66                                         def initialize_to_1_array(my_array_1 = [], *my_array):
+    67  109.469 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    68  109.469 MiB   30.613 MiB     4000000       my_array_1.append(1)
+    69  109.469 MiB    0.000 MiB           1     print('Array initialized to 1 successfully')
+    70  261.590 MiB  261.590 MiB           1     initialize_to_2_array (my_array_1)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    73  109.469 MiB  109.469 MiB           1   @profile
+    74                                         def initialize_to_2_array(my_array_1 = [], *my_array):
+    75  139.891 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    76  139.891 MiB   30.422 MiB     4000000       my_array_1.append(2)
+    77  139.891 MiB    0.000 MiB           1     print('Array initialized to 2 successfully')
+    78  261.590 MiB  261.590 MiB           1     initialize_to_3_array (my_array_1)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    80  139.891 MiB  139.891 MiB           1   @profile
+    81                                         def initialize_to_3_array(my_array_1 = [], *my_array):
+    82  170.523 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    83  170.523 MiB   30.633 MiB     4000000       my_array_1.append(3)
+    84  170.523 MiB    0.000 MiB           1     print('Array initialized to 3 successfully')
+    85  261.590 MiB  261.590 MiB           1     initialize_to_4_array (my_array_1)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    87  170.523 MiB  170.523 MiB           1   @profile
+    88                                         def initialize_to_4_array(my_array_1 = [], *my_array):
+    89  200.945 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+    90  200.945 MiB   30.422 MiB     4000000       my_array_1.append(4)
+    91  200.945 MiB    0.000 MiB           1     print('Array initialized to 4 successfully')
+    92  261.590 MiB  261.590 MiB           1     initialize_to_5_array (my_array_1)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    94  200.945 MiB  200.945 MiB           1   @profile
+    95                                         def initialize_to_5_array(my_array_1 = [], *my_array):
+    96  231.168 MiB -4435.199 MiB     4000001     for x in range(0,4000000):
+    97  231.168 MiB -4404.805 MiB     4000000       my_array_1.append(5)
+    98  231.168 MiB    0.000 MiB           1     print('Array initialized to 5 successfully')
+    99  261.590 MiB  261.590 MiB           1     initialize_to_6_array (my_array_1)
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   101  231.168 MiB  231.168 MiB           1   @profile
+   102                                         def initialize_to_6_array(my_array_1 = [], *my_array):
+   103  261.590 MiB    0.000 MiB     4000001     for x in range(0,4000000):
+   104  261.590 MiB   30.422 MiB     4000000       my_array_1.append(6)
+   105  261.590 MiB    0.000 MiB           1     print('Array initialized to 6 successfully')
+
+
+Filename: example_3.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   107   32.848 MiB   32.848 MiB           1   @profile
+   108                                         def main():
+   109   32.770 MiB   32.770 MiB           1     create_array()
+   110   32.770 MiB   32.770 MiB           1     print_statement()
+   111   33.023 MiB   33.023 MiB           1     multiply_arrays_1()
+   112   33.023 MiB   33.023 MiB           1     multiply_arrays_2()
+   113   33.023 MiB   33.023 MiB           1     multiply_arrays_3()
+   114   33.023 MiB   33.023 MiB           1     multiply_arrays_4()
+
+

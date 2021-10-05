@@ -1,0 +1,7 @@
+Source function,Function called,Time(s)
+initialize_array,initialize_to_1_array,1
+create_array,initialize_array,1
+main,print_statement,1
+main,create_array,1
+<module>,main,1
+__main__,<module>,1

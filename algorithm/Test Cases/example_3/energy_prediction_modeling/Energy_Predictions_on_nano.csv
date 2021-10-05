@@ -1,0 +1,16 @@
+Function Name,Energy Prediction (Joule)
+main,30.6101696763605
+initialize_to_6_array,336.2776189197591
+initialize_to_5_array,397.9353071818982
+initialize_to_4_array,360.3330194358458
+initialize_to_3_array,323.1597307307719
+initialize_to_2_array,285.05814233156866
+initialize_to_1_array,247.49267406110928
+initialize_array,178.49986076130247
+print_statement,38.047838587348366
+multiply_arrays_4,2.8894864437207133
+multiply_arrays_3,2.8894864437207133
+multiply_arrays_2,2.8894864437207133
+multiply_arrays_1,2.6809295634150345
+create_two_dimensions_array,58.458653875474766
+create_array,115.37725161294765

@@ -1,0 +1,21 @@
+Function Name,Time on Nano Prediction (s)
+main,10.235776420195823
+initialize_to_9_array,58.12492716991824
+initialize_to_8_array,66.91359098619546
+initialize_to_7_array,63.830808169431606
+initialize_to_6_array,60.76832725263053
+initialize_to_5_array,57.58609115517744
+initialize_to_4_array,54.57034362350325
+initialize_to_3_array,51.46136430855053
+initialize_to_2_array,48.50902918914761
+initialize_to_1_array,45.41236177384636
+initialize_array,40.1226515299896
+print_statement,1.937845507392961
+multiply_arrays_6,5.335029742307715
+multiply_arrays_5,5.335029742307715
+multiply_arrays_4,5.335029742307715
+multiply_arrays_3,5.335029742307715
+multiply_arrays_2,5.335029742307715
+multiply_arrays_1,5.335029742307715
+create_two_dimensions_array,10.494617051697055
+create_array,19.48692454789181

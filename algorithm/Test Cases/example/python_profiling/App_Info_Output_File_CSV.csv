@@ -1,0 +1,6 @@
+Name,Memory,Time,nCalls
+main,37.86,0.024,1
+initialize_to_1_array,285.564,0.488,1
+initialize_array,224.32799999999997,0.625,1
+print_statement,18.93,0.000,1
+create_array,181.988,0.112,1

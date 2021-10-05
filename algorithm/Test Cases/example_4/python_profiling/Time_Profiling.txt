@@ -1,0 +1,51 @@
+Array initialized to 1 successfully
+Array initialized to 2 successfully
+Array initialized to 3 successfully
+Array initialized to 4 successfully
+Array initialized to 5 successfully
+Array initialized to 6 successfully
+Array initialized to 7 successfully
+Array initialized to 8 successfully
+Array initialized to 9 successfully
+Array created successfully
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+         40521268 function calls in 161.526 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        6    0.000    0.000    0.031    0.005 <__array_function__ internals>:2(dot)
+        1    0.000    0.000  161.526  161.526 <string>:1(<module>)
+        1    8.628    8.628   94.973   94.973 example_4.py:103(initialize_to_4_array)
+        1    8.595    8.595   79.165   79.165 example_4.py:110(initialize_to_5_array)
+        1    8.622    8.622   63.394   63.394 example_4.py:117(initialize_to_6_array)
+        1    8.600    8.600   47.531   47.531 example_4.py:124(initialize_to_7_array)
+        1    8.583    8.583   31.750   31.750 example_4.py:131(initialize_to_8_array)
+        1    8.641    8.641   15.878   15.878 example_4.py:138(initialize_to_9_array)
+       12    0.258    0.021    0.480    0.040 example_4.py:14(create_two_dimensions_array)
+        1    0.152    0.152  161.526  161.526 example_4.py:145(main)
+        1    0.000    0.000    0.085    0.085 example_4.py:28(multiply_arrays_1)
+        1    0.000    0.000    0.085    0.085 example_4.py:35(multiply_arrays_2)
+        1    0.000    0.000    0.085    0.085 example_4.py:42(multiply_arrays_3)
+        1    0.000    0.000    0.085    0.085 example_4.py:49(multiply_arrays_4)
+        1    0.000    0.000    0.085    0.085 example_4.py:56(multiply_arrays_5)
+        1    0.000    0.000    0.085    0.085 example_4.py:63(multiply_arrays_6)
+        1    0.880    0.880  160.864  160.864 example_4.py:7(create_array)
+        1    0.000    0.000    0.000    0.000 example_4.py:71(print_statement)
+        1    8.941    8.941  159.256  159.256 example_4.py:75(initialize_array)
+        1    8.715    8.715  142.828  142.828 example_4.py:81(initialize_to_1_array)
+        1    8.707    8.707  126.836  126.836 example_4.py:89(initialize_to_2_array)
+        1    8.631    8.631  110.817  110.817 example_4.py:96(initialize_to_3_array)
+        6    0.000    0.000    0.000    0.000 multiarray.py:716(dot)
+        1    0.000    0.000  161.526  161.526 {built-in method builtins.exec}
+       16    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        6    0.031    0.005    0.031    0.005 {built-in method numpy.core._multiarray_umath.implement_array_function}
+ 40521200   73.543    0.000   73.543    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

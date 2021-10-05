@@ -1,0 +1,41 @@
+Array initialized to 1 successfully
+Array initialized to 2 successfully
+Array initialized to 3 successfully
+Array initialized to 4 successfully
+Array initialized to 5 successfully
+Array initialized to 6 successfully
+Array created successfully
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+Arrays have been multiplied
+         28480848 function calls in 116.744 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        4    0.000    0.000    0.021    0.005 <__array_function__ internals>:2(dot)
+        1    0.000    0.000  116.744  116.744 <string>:1(<module>)
+        1   10.013   10.013   18.356   18.356 example_3.py:102(initialize_to_6_array)
+        1    0.110    0.110  116.744  116.744 example_3.py:108(main)
+        8    0.175    0.022    0.324    0.041 example_3.py:14(create_two_dimensions_array)
+        1    0.000    0.000    0.087    0.087 example_3.py:28(multiply_arrays_1)
+        1    0.000    0.000    0.086    0.086 example_3.py:35(multiply_arrays_2)
+        1    0.000    0.000    0.087    0.087 example_3.py:42(multiply_arrays_3)
+        1    0.000    0.000    0.086    0.086 example_3.py:49(multiply_arrays_4)
+        1    0.000    0.000    0.000    0.000 example_3.py:56(print_statement)
+        1    8.902    8.902  114.679  114.679 example_3.py:60(initialize_array)
+        1    8.690    8.690   98.370   98.370 example_3.py:66(initialize_to_1_array)
+        1    0.873    0.873  116.288  116.288 example_3.py:7(create_array)
+        1    8.682    8.682   82.300   82.300 example_3.py:74(initialize_to_2_array)
+        1    8.717    8.717   66.358   66.358 example_3.py:81(initialize_to_3_array)
+        1    8.648    8.648   50.289   50.289 example_3.py:88(initialize_to_4_array)
+        1    8.684    8.684   34.403   34.403 example_3.py:95(initialize_to_5_array)
+        4    0.000    0.000    0.000    0.000 multiarray.py:716(dot)
+        1    0.000    0.000  116.744  116.744 {built-in method builtins.exec}
+       11    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        4    0.021    0.005    0.021    0.005 {built-in method numpy.core._multiarray_umath.implement_array_function}
+ 28480800   53.228    0.000   53.228    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

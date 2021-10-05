@@ -1,0 +1,29 @@
+Array initialized to 1 successfully
+Array initialized to 2 successfully
+Array initialized to 3 successfully
+Array initialized to 4 successfully
+Array initialized to 5 successfully
+Array initialized to 6 successfully
+Array created successfully
+         28400020 function calls in 112.933 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000  112.933  112.933 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 example_2.py:14(print_statement)
+        1    8.651    8.651  111.229  111.229 example_2.py:18(initialize_array)
+        1    8.609    8.609   95.314   95.314 example_2.py:24(initialize_to_1_array)
+        1    8.709    8.709   79.462   79.462 example_2.py:32(initialize_to_2_array)
+        1    8.650    8.650   63.465   63.465 example_2.py:39(initialize_to_3_array)
+        1    8.585    8.585   47.566   47.566 example_2.py:46(initialize_to_4_array)
+        1    8.707    8.707   31.787   31.787 example_2.py:53(initialize_to_5_array)
+        1    0.867    0.867  112.825  112.825 example_2.py:6(create_array)
+        1    8.567    8.567   15.769   15.769 example_2.py:60(initialize_to_6_array)
+        1    0.108    0.108  112.933  112.933 example_2.py:66(main)
+        1    0.000    0.000  112.933  112.933 {built-in method builtins.exec}
+        7    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+ 28400000   51.478    0.000   51.478    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+

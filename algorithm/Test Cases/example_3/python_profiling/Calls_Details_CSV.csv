@@ -1,0 +1,20 @@
+Source function,Function called,Time(s)
+multiply_arrays_4,create_two_dimensions_array,2
+multiply_arrays_3,create_two_dimensions_array,2
+multiply_arrays_2,create_two_dimensions_array,2
+multiply_arrays_1,create_two_dimensions_array,2
+initialize_to_5_array,initialize_to_6_array,1
+initialize_to_4_array,initialize_to_5_array,1
+initialize_to_3_array,initialize_to_4_array,1
+initialize_to_2_array,initialize_to_3_array,1
+initialize_to_1_array,initialize_to_2_array,1
+initialize_array,initialize_to_1_array,1
+create_array,initialize_array,1
+main,multiply_arrays_4,1
+main,multiply_arrays_3,1
+main,multiply_arrays_2,1
+main,multiply_arrays_1,1
+main,print_statement,1
+main,create_array,1
+<module>,main,1
+__main__,<module>,1

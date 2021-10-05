@@ -1,0 +1,15 @@
+nodedef> name VARCHAR, label VARCHAR, group VARCHAR, calls INTEGER, time DOUBLE, memory_in INTEGER, memory_out INTEGER, color VARCHAR, width DOUBLE
+__main__,__main__,__main__,1,0,0,0,'153,153,229',1.0
+<module>,<module>,<module>,1,11.23478102684021,0,0,'229,0,0',3.0
+main,main,main,1,11.234431982040405,0,0,'229,0,0',2.9999607218761177
+create_array,create_array,create_array,1,11.207825899124146,0,0,'229,0,1',2.9969644581070556
+initialize_array,initialize_array,initialize_array,1,10.694911241531372,0,0,'229,7,28',2.9383070799421134
+initialize_to_1_array,initialize_to_1_array,initialize_to_1_array,1,5.309666872024536,0,0,'221,80,229',2.1889470909219524
+print_statement,print_statement,print_statement,1,0.00017786026000976562,0,0,'153,152,229',1.000054404246134
+edgedef> node1 VARCHAR, node2 VARCHAR, label VARCHAR, labelvisible VARCHAR, directed BOOLEAN, color VARCHAR, width DOUBLE
+__main__,<module>,1,true,true,'178,0,0',2.0
+<module>,main,1,true,true,'178,0,0',2.0
+main,create_array,1,true,true,'178,0,1',2.0
+main,print_statement,1,true,true,'119,118,178',2.0
+create_array,initialize_array,1,true,true,'178,5,22',2.0
+initialize_array,initialize_to_1_array,1,true,true,'172,62,178',2.0

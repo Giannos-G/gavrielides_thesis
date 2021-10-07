@@ -422,5 +422,13 @@ def main():
         #print ("The final Nodes Resources for the best case is: \n", Final_Node_Resources)
         print ("The time using the best Map Array is: \n" , Best_Expected_Total_Time, "(s)")
 
+        with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test Cases/Algorithm Results.csv', 'a', newline='')as f:
+            thewriter=csv.writer(f)
+            thewriter.writerow([number_of_functions, number_of_nano_nodes, number_of_jetson_nodes, Time_threshold,
+            Best_Expected_Total_Time, Total_Energy, Final_Map_Array ])
+
+            print ('Saved: ', number_of_functions, number_of_nano_nodes, number_of_jetson_nodes, Time_threshold,
+            Best_Expected_Total_Time, Total_Energy, Final_Map_Array)
+
 if __name__ == "__main__":
     main()

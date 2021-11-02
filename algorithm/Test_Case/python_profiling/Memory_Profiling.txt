@@ -1,0 +1,226 @@
+Filename: Test_Case.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    41  121.457 MiB  121.457 MiB           1   @profile
+    42                                         def plot_det():
+    43  121.457 MiB    0.000 MiB           1       N_SAMPLES = 1000
+    44                                         
+    45  121.457 MiB    0.000 MiB           1       classifiers = {
+    46  121.457 MiB    0.000 MiB           1           "Linear SVM": make_pipeline(StandardScaler(), LinearSVC(C=0.025)),
+    47  121.457 MiB    0.000 MiB           2           "Random Forest": RandomForestClassifier(
+    48  121.457 MiB    0.000 MiB           1               max_depth=5, n_estimators=10, max_features=1),}
+    49                                                 
+    50                                             
+    51                                         
+    52  121.562 MiB    0.105 MiB           2       X, y = make_classification(
+    53  121.457 MiB    0.000 MiB           1           n_samples=N_SAMPLES, n_features=2, n_redundant=0, n_informative=2,
+    54  121.457 MiB    0.000 MiB           1           random_state=1, n_clusters_per_class=1)
+    55                                         
+    56  121.562 MiB    0.000 MiB           2       X_train, X_test, y_train, y_test = train_test_split(
+    57  121.562 MiB    0.000 MiB           1           X, y, test_size=.4, random_state=0)
+    58                                         
+    59                                             # prepare plots
+    60  139.117 MiB   17.555 MiB           1       fig, [ax_roc, ax_det] = plt.subplots(1, 2, figsize=(11, 5))
+    61                                         
+    62  140.195 MiB    0.000 MiB           3       for name, clf in classifiers.items():
+    63  139.984 MiB    0.574 MiB           2           clf.fit(X_train, y_train)
+    64                                         
+    65  140.195 MiB    0.211 MiB           2           plot_roc_curve(clf, X_test, y_test, ax=ax_roc, name=name)
+    66  140.195 MiB    0.293 MiB           2           plot_det_curve(clf, X_test, y_test, ax=ax_det, name=name)
+    67                                         
+    68  140.195 MiB    0.000 MiB           1       ax_roc.set_title('Receiver Operating Characteristic (ROC) curves')
+    69  140.195 MiB    0.000 MiB           1       ax_det.set_title('Detection Error Tradeoff (DET) curves')
+    70                                         
+    71  140.195 MiB    0.000 MiB           1       ax_roc.grid(linestyle='--')
+    72  140.195 MiB    0.000 MiB           1       ax_det.grid(linestyle='--')
+    73                                         
+    74  140.195 MiB    0.000 MiB           1       plt.legend()
+    75                                             # plt.show()
+
+
+Filename: Test_Case.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    78  140.195 MiB  140.195 MiB           1   @profile
+    79                                         def plot_grid_search_digits():
+    80                                             # Loading the Digits dataset
+    81  145.594 MiB    5.398 MiB           1       digits = datasets.load_digits()
+    82                                         
+    83                                             # To apply an classifier on this data, we need to flatten the image, to
+    84                                             # turn the data in a (samples, feature) matrix:
+    85  145.594 MiB    0.000 MiB           1       n_samples = len(digits.images)
+    86  145.594 MiB    0.000 MiB           1       X = digits.images.reshape((n_samples, -1))
+    87  145.594 MiB    0.000 MiB           1       y = digits.target
+    88                                         
+    89                                             # Split the dataset in two equal parts
+    90  145.848 MiB    0.254 MiB           2       X_train, X_test, y_train, y_test = train_test_split(
+    91  145.594 MiB    0.000 MiB           1           X, y, test_size=0.5, random_state=0)
+    92                                         
+    93                                             # Set the parameters by cross-validation
+    94  145.848 MiB    0.000 MiB           3       tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
+    95  145.848 MiB    0.000 MiB           1                           'C': [1, 10, 100, 1000]},
+    96  145.848 MiB    0.000 MiB           1                           {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+    97                                         
+    98  145.848 MiB    0.000 MiB           1       scores = ['precision', 'recall']
+    99                                         
+   100  146.691 MiB    0.000 MiB           3       for score in scores:
+   101  146.691 MiB    0.000 MiB           2           print("# Tuning hyper-parameters for %s" % score)
+   102  146.691 MiB    0.000 MiB           2           print()
+   103                                         
+   104  146.691 MiB    0.000 MiB           4           clf = GridSearchCV(
+   105  146.691 MiB    0.000 MiB           2               SVC(), tuned_parameters, scoring='%s_macro' % score)
+   106                                                 
+   107  146.691 MiB    0.844 MiB           2           clf.fit(X_train, y_train)
+   108                                         
+   109  146.691 MiB    0.000 MiB           2           print("Best parameters set found on development set:")
+   110  146.691 MiB    0.000 MiB           2           print()
+   111  146.691 MiB    0.000 MiB           2           print(clf.best_params_)
+   112  146.691 MiB    0.000 MiB           2           print()
+   113  146.691 MiB    0.000 MiB           2           print("Grid scores on development set:")
+   114  146.691 MiB    0.000 MiB           2           print()
+   115  146.691 MiB    0.000 MiB           2           means = clf.cv_results_['mean_test_score']
+   116  146.691 MiB    0.000 MiB           2           stds = clf.cv_results_['std_test_score']
+   117  146.691 MiB    0.000 MiB          26           for mean, std, params in zip(means, stds, clf.cv_results_['params']):
+   118  146.691 MiB    0.000 MiB          48               print("%0.3f (+/-%0.03f) for %r"
+   119  146.691 MiB    0.000 MiB          24                   % (mean, std * 2, params))
+   120  146.691 MiB    0.000 MiB           2           print()
+   121                                         
+   122  146.691 MiB    0.000 MiB           2           print("Detailed classification report:")
+   123  146.691 MiB    0.000 MiB           2           print()
+   124  146.691 MiB    0.000 MiB           2           print("The model is trained on the full development set.")
+   125  146.691 MiB    0.000 MiB           2           print("The scores are computed on the full evaluation set.")
+   126  146.691 MiB    0.000 MiB           2           print()
+   127  146.691 MiB    0.000 MiB           2           y_true, y_pred = y_test, clf.predict(X_test)
+   128  146.691 MiB    0.000 MiB           2           print(classification_report(y_true, y_pred))
+   129  146.691 MiB    0.000 MiB           2           print()
+
+
+Filename: Test_Case.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   132  146.691 MiB  146.691 MiB           1   @profile
+   133                                         def plot_cv_digits():
+   134  147.176 MiB    0.484 MiB           1       X, y = datasets.load_digits(return_X_y=True)
+   135                                         
+   136  147.176 MiB    0.000 MiB           1       svc = svm.SVC(kernel='linear')
+   137  147.176 MiB    0.000 MiB           1       C_s = np.logspace(-10, 0, 10)
+   138                                         
+   139  147.176 MiB    0.000 MiB           1       scores = list()
+   140  147.176 MiB    0.000 MiB           1       scores_std = list()
+   141  147.426 MiB    0.000 MiB          11       for C in C_s:
+   142  147.426 MiB    0.000 MiB          10           svc.C = C
+   143  147.426 MiB    0.250 MiB          10           this_scores = cross_val_score(svc, X, y, n_jobs=1)
+   144  147.426 MiB    0.000 MiB          10           scores.append(np.mean(this_scores))
+   145  147.426 MiB    0.000 MiB          10           scores_std.append(np.std(this_scores))
+   146                                         
+   147                                             # Do the plotting
+   148  147.426 MiB    0.000 MiB           1       import matplotlib.pyplot as plt
+   149  147.426 MiB    0.000 MiB           1       plt.figure()
+   150  147.426 MiB    0.000 MiB           1       plt.semilogx(C_s, scores)
+   151  147.426 MiB    0.000 MiB           1       plt.semilogx(C_s, np.array(scores) + np.array(scores_std), 'b--')
+   152  147.426 MiB    0.000 MiB           1       plt.semilogx(C_s, np.array(scores) - np.array(scores_std), 'b--')
+   153  147.426 MiB    0.000 MiB           1       locs, labels = plt.yticks()
+   154  147.426 MiB    0.000 MiB          15       plt.yticks(locs, list(map(lambda x: "%g" % x, locs)))
+   155  147.426 MiB    0.000 MiB           1       plt.ylabel('CV score')
+   156  147.426 MiB    0.000 MiB           1       plt.xlabel('Parameter C')
+   157  147.426 MiB    0.000 MiB           1       plt.ylim(0, 1.1)
+   158                                             # plt.show()
+
+
+Filename: Test_Case.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   161  147.426 MiB  147.426 MiB           1   @profile
+   162                                         def plot_feature_union():
+   163  147.426 MiB    0.000 MiB           1       iris = load_iris()
+   164                                         
+   165  147.426 MiB    0.000 MiB           1       X, y = iris.data, iris.target
+   166                                         
+   167                                             # This dataset is way too high-dimensional. Better do PCA:
+   168  147.426 MiB    0.000 MiB           1       pca = PCA(n_components=2)
+   169                                         
+   170                                             # Maybe some original features were good, too?
+   171  147.426 MiB    0.000 MiB           1       selection = SelectKBest(k=1)
+   172                                         
+   173                                             # Build estimator from PCA and Univariate selection:
+   174                                         
+   175  147.426 MiB    0.000 MiB           1       combined_features = FeatureUnion([("pca", pca), ("univ_select", selection)])
+   176                                         
+   177                                             # Use combined features to transform dataset:
+   178  148.008 MiB    0.582 MiB           1       X_features = combined_features.fit(X, y).transform(X)
+   179  148.008 MiB    0.000 MiB           1       print("Combined space has", X_features.shape[1], "features")
+   180                                         
+   181  148.008 MiB    0.000 MiB           1       svm = SVC(kernel="linear")
+   182                                         
+   183                                             # Do grid search over k, n_components and C:
+   184                                         
+   185  148.008 MiB    0.000 MiB           1       pipeline = Pipeline([("features", combined_features), ("svm", svm)])
+   186                                         
+   187  148.008 MiB    0.000 MiB           2       param_grid = dict(features__pca__n_components=[1, 2, 3],
+   188  148.008 MiB    0.000 MiB           1                       features__univ_select__k=[1, 2],
+   189  148.008 MiB    0.000 MiB           1                       svm__C=[0.1, 1, 10])
+   190                                         
+   191  148.008 MiB    0.000 MiB           1       grid_search = GridSearchCV(pipeline, param_grid=param_grid, verbose=10)
+   192  148.008 MiB    0.000 MiB           1       grid_search.fit(X, y)
+   193  148.008 MiB    0.000 MiB           1       print(grid_search.best_estimator_)
+
+
+Filename: Test_Case.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   196  148.008 MiB  148.008 MiB           1   @profile
+   197                                         def plot_pca_vs_lda():
+   198  148.008 MiB    0.000 MiB           1       iris = datasets.load_iris()
+   199                                         
+   200  148.008 MiB    0.000 MiB           1       X = iris.data
+   201  148.008 MiB    0.000 MiB           1       y = iris.target
+   202  148.008 MiB    0.000 MiB           1       target_names = iris.target_names
+   203                                         
+   204  148.008 MiB    0.000 MiB           1       pca = PCA(n_components=2)
+   205  148.008 MiB    0.000 MiB           1       X_r = pca.fit(X).transform(X)
+   206                                         
+   207  148.008 MiB    0.000 MiB           1       lda = LinearDiscriminantAnalysis(n_components=2)
+   208  148.008 MiB    0.000 MiB           1       X_r2 = lda.fit(X, y).transform(X)
+   209                                         
+   210                                             # Percentage of variance explained for each components
+   211  148.008 MiB    0.000 MiB           2       print('explained variance ratio (first two components): %s'
+   212  148.008 MiB    0.000 MiB           1           % str(pca.explained_variance_ratio_))
+   213                                         
+   214  148.605 MiB    0.598 MiB           1       plt.figure()
+   215  148.605 MiB    0.000 MiB           1       colors = ['navy', 'turquoise', 'darkorange']
+   216  148.605 MiB    0.000 MiB           1       lw = 2
+   217                                         
+   218  148.605 MiB    0.000 MiB           4       for color, i, target_name in zip(colors, [0, 1, 2], target_names):
+   219  148.605 MiB    0.000 MiB           6           plt.scatter(X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=.8, lw=lw,
+   220  148.605 MiB    0.000 MiB           3                       label=target_name)
+   221  148.605 MiB    0.000 MiB           1       plt.legend(loc='best', shadow=False, scatterpoints=1)
+   222  148.605 MiB    0.000 MiB           1       plt.title('PCA of IRIS dataset')
+   223                                         
+   224  148.605 MiB    0.000 MiB           1       plt.figure()
+   225  148.605 MiB    0.000 MiB           4       for color, i, target_name in zip(colors, [0, 1, 2], target_names):
+   226  148.605 MiB    0.000 MiB           6           plt.scatter(X_r2[y == i, 0], X_r2[y == i, 1], alpha=.8, color=color,
+   227  148.605 MiB    0.000 MiB           3                       label=target_name)
+   228  148.605 MiB    0.000 MiB           1       plt.legend(loc='best', shadow=False, scatterpoints=1)
+   229  148.605 MiB    0.000 MiB           1       plt.title('LDA of IRIS dataset')
+   230                                         
+   231                                             # plt.show()
+
+
+Filename: Test_Case.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   233  121.457 MiB  121.457 MiB           1   @profile
+   234                                         def main():
+   235  140.195 MiB  140.195 MiB           1     plot_det()
+   236  146.691 MiB  146.691 MiB           1     plot_grid_search_digits()
+   237  147.426 MiB  147.426 MiB           1     plot_cv_digits()
+   238  148.008 MiB  148.008 MiB           1     plot_feature_union()
+   239  148.605 MiB  148.605 MiB           1     plot_pca_vs_lda()
+
+

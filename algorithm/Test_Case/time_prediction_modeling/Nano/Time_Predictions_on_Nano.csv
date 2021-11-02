@@ -1,0 +1,7 @@
+Function Name,Time on Nano Prediction (s)
+main,104.78031201014926
+plot_pca_vs_lda,123.9003576611959
+plot_feature_union,85.68694349163904
+plot_cv_digits,136.1426083654505
+plot_grid_search_digits,204.49479206636263
+plot_det,100.03302319062664

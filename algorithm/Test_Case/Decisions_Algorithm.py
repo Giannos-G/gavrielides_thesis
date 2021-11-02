@@ -43,7 +43,7 @@ def GetSerialorParallelProcessing():
     return decision
 
 def GetNumberOfFunctions():
-    file = open("/home/giannos-g/Desktop/gavrielides_thesis/python_profiling/App_Info_Output_File_CSV.csv")
+    file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv")
     reader = csv.reader(file)
     lines = len(list(reader))
     file.close()
@@ -55,7 +55,7 @@ def GetNumberOfFunctions():
 def GetWeightsArray():
     # Weights of each function
     # [Memory, Time, no_of_calls]
-    mem_file = open("/home/giannos-g/Desktop/gavrielides_thesis/python_profiling/App_Info_Output_File_CSV.csv")
+    mem_file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv")
     table = []
     for line in mem_file:
         row = []
@@ -125,7 +125,7 @@ def RandomlyFillTable(my_table, nodes, functions, nodes_resources, weights):
     
     return my_table
 
-def GetCommunications(functions):
+# def GetCommunications(functions):
     #Initialize the communications table
     communications_table = []                                  # Rows = No.OfFunctions
     var = 0                                                    # Columns = No.OfFunctions
@@ -170,7 +170,7 @@ def GetCommunications(functions):
 
 
 
-def GetEnergyForEachFunction_on_Nano():   #NOT USED
+"""def GetEnergyForEachFunction_on_Nano():   #NOT USED
     predictions_table = []
     with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
         for line in f:
@@ -213,13 +213,13 @@ def GetEnergyForEachFunction_on_Uno():      #NOT USED
     #predictions_table = predictions_table.astype(float)
 
     return predictions_table        # This is a 2D array
-
+"""
 
 
 def Energy_Prediction_Table_on_Nano():
     predictions_table = []    
-    # Prediction for Nano
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Predictions.csv', 'r', newline='')as f:
+    # Energy Prediction for Nano
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/energy_prediction_modeling/Energy_Predictions_on_nano.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -234,8 +234,8 @@ def Energy_Prediction_Table_on_Nano():
 
 def Energy_Prediction_Table_on_Jetson():
     predictions_table = []    
-    # Prediction for Jetson
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/energy_prediction_modeling/Jetson_xavier_nx_00/Predictions_jetson_xavier_nx_00.csv', 'r', newline='')as f:
+    # Energy Prediction for Xavier
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/energy_prediction_modeling/Jetson_xavier_nx_00/Energy_Predictions_jetson_xavier_nx_00.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -263,7 +263,7 @@ time_on_nano_table, time_on_jetson_table, decision):     # Sum of energy of each
         row = []
     ###################################
 
-    # Jetson Map Table
+    # Xavier Map Table
     jetson_map_table = []
     row = []
     for i in range(0,functions ):
@@ -318,18 +318,18 @@ def GetCostOfCommunications(communications, map_table,functions,nodes,decision):
 
     return total_cost_of_communication
 
-def GetTotalEnergy(energy_array, nodes, communication_cost):
+def GetTotalEnergy(energy_array, nodes):  #, communication_cost):
     tot_energy = 0
     for r in range(int(nodes)):
         tot_energy += energy_array[r]
 
-    tot_energy += communication_cost
+    #tot_energy += communication_cost
     return tot_energy
 
 def GetTotalTimeOnNano():
     predictions_table = []    
-    # Prediction for Nano
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/time_prediction_modeling/Nano/Time_Predictions_on_Nano.csv', 'r', newline='')as f:
+    # Time Prediction for Nano
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Nano/Time_Predictions_on_Nano.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -343,8 +343,8 @@ def GetTotalTimeOnNano():
 
 def GetTotalTimeOnJetson():
     predictions_table = []    
-    # Prediction for Jetson
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/time_prediction_modeling/Jetson/Time_Predictions_on_Jetson.csv', 'r', newline='')as f:
+    # Time Prediction for Xavier
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Xavier/Time_Predictions_on_Xavier.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -382,7 +382,7 @@ def GetTotalTime(time_on_nano_table, time_on_jetson_table,nano_nodes, jetson_nod
 
 def main():
     #iterations = input("Set the number of iterations \n")
-    iterations = 10000
+    iterations = 100000
     Total_Energy = 0
     Best_Expected_Total_Time = 0
     Time_threshold = GetTimeThreshold()
@@ -413,9 +413,9 @@ def main():
                                                     map_table, number_of_nano_nodes, 
                                                     number_of_jetson_nodes, time_on_nano_table,
                                                     time_on_jetson_table, serial_or_parallel)
-        communications = GetCommunications(number_of_functions)
-        cost_of_communications = GetCostOfCommunications(communications, map_table, number_of_functions, number_of_nodes,serial_or_parallel)
-        total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes, cost_of_communications)
+        #communications = GetCommunications(number_of_functions)
+        #cost_of_communications = GetCostOfCommunications(communications, map_table, number_of_functions, number_of_nodes,serial_or_parallel)
+        total_energy = GetTotalEnergy(total_energy_matrix, number_of_nodes) #cost_of_communications)
         
         #print("Total Time for iteration ", i+1," = ", Expected_Total_Time, " (s)")
         #print("Total Energy for iteration ", i+1," = ", total_energy, " (Joule)")

@@ -1,0 +1,7 @@
+Name,Memory,Time,nCalls
+main,730.925,32.359,1
+plot_pca_vs_lda,3560.55,0.622,1
+plot_feature_union,2217.21,3.757,1
+plot_cv_digits,2947.269999999999,14.211,1
+plot_grid_search_digits,5271.175999999996,9.707,1
+plot_det,2615.5460000000003,4.062,1

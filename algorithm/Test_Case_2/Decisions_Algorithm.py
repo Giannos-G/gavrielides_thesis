@@ -43,7 +43,7 @@ def GetSerialorParallelProcessing():
     return decision
 
 def GetNumberOfFunctions():
-    file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv")
+    file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/python_profiling/App_Info_Output_File_CSV.csv")
     reader = csv.reader(file)
     lines = len(list(reader))
     file.close()
@@ -55,7 +55,7 @@ def GetNumberOfFunctions():
 def GetWeightsArray():
     # Weights of each function
     # [Memory, Time, no_of_calls]
-    mem_file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv")
+    mem_file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/python_profiling/App_Info_Output_File_CSV.csv")
     table = []
     for line in mem_file:
         row = []
@@ -219,7 +219,7 @@ def GetEnergyForEachFunction_on_Uno():      #NOT USED
 def Energy_Prediction_Table_on_Nano():
     predictions_table = []    
     # Energy Prediction for Nano
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/energy_prediction_modeling/Energy_Predictions_on_nano.csv', 'r', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/energy_prediction_modeling/Energy_Predictions_on_nano.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -235,7 +235,7 @@ def Energy_Prediction_Table_on_Nano():
 def Energy_Prediction_Table_on_Jetson():
     predictions_table = []    
     # Energy Prediction for Xavier
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/energy_prediction_modeling/Jetson_xavier_nx_00/Energy_Predictions_jetson_xavier_nx_00.csv', 'r', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/energy_prediction_modeling/Jetson_xavier_nx_00/Energy_Predictions_jetson_xavier_nx_00.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -329,7 +329,7 @@ def GetTotalEnergy(energy_array, nodes):  #, communication_cost):
 def GetTotalTimeOnNano():
     predictions_table = []    
     # Time Prediction for Nano
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Nano/Time_Predictions_on_Nano.csv', 'r', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/time_prediction_modeling/Nano/Time_Predictions_on_Nano.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -344,7 +344,7 @@ def GetTotalTimeOnNano():
 def GetTotalTimeOnJetson():
     predictions_table = []    
     # Time Prediction for Xavier
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Xavier/Time_Predictions_on_Xavier.csv', 'r', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/time_prediction_modeling/Xavier/Time_Predictions_on_Xavier.csv', 'r', newline='')as f:
         for line in f:
             part = line.split(',')
             prediction_row = [part[1]]
@@ -382,7 +382,7 @@ def GetTotalTime(time_on_nano_table, time_on_jetson_table,nano_nodes, jetson_nod
 
 def main():
     #iterations = input("Set the number of iterations \n")
-    iterations = 100000
+    iterations = 300000
     Total_Energy = 0
     Best_Expected_Total_Time = 0
     Time_threshold = GetTimeThreshold()

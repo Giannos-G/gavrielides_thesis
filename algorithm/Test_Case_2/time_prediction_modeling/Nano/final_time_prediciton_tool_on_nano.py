@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 
 def main():
     #--------------Uploading dataset--------------
-    data = pd.read_csv("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Nano/Time_profiling_Nano_details.csv")
+    data = pd.read_csv("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/time_prediction_modeling/Nano/Time_profiling_Nano_details.csv")
     data.drop("PyScript", inplace=True, axis=1) # Delete 1st column => filenames of samples
 
     #------------------Remove the outliers------------------
@@ -35,7 +35,7 @@ def main():
     #--------------Predict data--------------
     predict_table = []
     info_table = []
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv', 'r', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/python_profiling/App_Info_Output_File_CSV.csv', 'r', newline='')as f:
         #thereader=csv.reader(f)
         for line in f:
             part = line.split(',')
@@ -53,7 +53,7 @@ def main():
     y_pred_lr_test = abs(y_pred_lr_test)
 
     # Get number of functions
-    file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv")
+    file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/python_profiling/App_Info_Output_File_CSV.csv")
     reader = csv.reader(file)
     lines = len(list(reader))
     file.close()
@@ -63,7 +63,7 @@ def main():
     for i in range(number_of_functions):
         print("My time prediction for function--> ", info_table[i][0], "<-- on Nano is: \n", y_pred_lr_test[i],"(s)")
 
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Nano/Time_Predictions_on_Nano.csv', 'w', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/time_prediction_modeling/Nano/Time_Predictions_on_Nano.csv', 'w', newline='')as f:
         thewriter=csv.writer(f)
         thewriter.writerow(['Function Name', 'Time on Nano Prediction (s)'])
         for i in range(number_of_functions):

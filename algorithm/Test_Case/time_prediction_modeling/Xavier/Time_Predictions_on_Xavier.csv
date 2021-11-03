@@ -1,7 +1,7 @@
 Function Name,Time on Xavier Prediction (s)
 main,30.367192029953003
 plot_pca_vs_lda,5.596277236938477
-plot_feature_union,7.8652918338775635
+plot_feature_union,7.339212656021118
 plot_cv_digits,22.793380975723267
 plot_grid_search_digits,30.60216808319092
-plot_det,7.8652918338775635
+plot_det,7.339212656021118

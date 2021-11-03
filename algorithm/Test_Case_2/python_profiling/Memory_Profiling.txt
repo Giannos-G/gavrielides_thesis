@@ -1,226 +1,784 @@
-Filename: Test_Case.py
+Filename: Test_Case_2.py
 
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-    41  121.457 MiB  121.457 MiB           1   @profile
-    42                                         def plot_det():
-    43  121.457 MiB    0.000 MiB           1       N_SAMPLES = 1000
-    44                                         
-    45  121.457 MiB    0.000 MiB           1       classifiers = {
-    46  121.457 MiB    0.000 MiB           1           "Linear SVM": make_pipeline(StandardScaler(), LinearSVC(C=0.025)),
-    47  121.457 MiB    0.000 MiB           2           "Random Forest": RandomForestClassifier(
-    48  121.457 MiB    0.000 MiB           1               max_depth=5, n_estimators=10, max_features=1),}
-    49                                                 
-    50                                             
-    51                                         
-    52  121.562 MiB    0.105 MiB           2       X, y = make_classification(
-    53  121.457 MiB    0.000 MiB           1           n_samples=N_SAMPLES, n_features=2, n_redundant=0, n_informative=2,
-    54  121.457 MiB    0.000 MiB           1           random_state=1, n_clusters_per_class=1)
-    55                                         
-    56  121.562 MiB    0.000 MiB           2       X_train, X_test, y_train, y_test = train_test_split(
-    57  121.562 MiB    0.000 MiB           1           X, y, test_size=.4, random_state=0)
-    58                                         
-    59                                             # prepare plots
-    60  139.117 MiB   17.555 MiB           1       fig, [ax_roc, ax_det] = plt.subplots(1, 2, figsize=(11, 5))
-    61                                         
-    62  140.195 MiB    0.000 MiB           3       for name, clf in classifiers.items():
-    63  139.984 MiB    0.574 MiB           2           clf.fit(X_train, y_train)
-    64                                         
-    65  140.195 MiB    0.211 MiB           2           plot_roc_curve(clf, X_test, y_test, ax=ax_roc, name=name)
-    66  140.195 MiB    0.293 MiB           2           plot_det_curve(clf, X_test, y_test, ax=ax_det, name=name)
-    67                                         
-    68  140.195 MiB    0.000 MiB           1       ax_roc.set_title('Receiver Operating Characteristic (ROC) curves')
-    69  140.195 MiB    0.000 MiB           1       ax_det.set_title('Detection Error Tradeoff (DET) curves')
-    70                                         
-    71  140.195 MiB    0.000 MiB           1       ax_roc.grid(linestyle='--')
-    72  140.195 MiB    0.000 MiB           1       ax_det.grid(linestyle='--')
-    73                                         
-    74  140.195 MiB    0.000 MiB           1       plt.legend()
-    75                                             # plt.show()
+    66  121.562 MiB  121.562 MiB           1   @profile
+    67                                         def plot_det():
+    68  121.562 MiB    0.000 MiB           1       N_SAMPLES = 1000
+    69                                         
+    70  121.562 MiB    0.000 MiB           1       classifiers = {
+    71  121.562 MiB    0.000 MiB           1           "Linear SVM": make_pipeline(StandardScaler(), LinearSVC(C=0.025)),
+    72  121.562 MiB    0.000 MiB           2           "Random Forest": RandomForestClassifier(
+    73  121.562 MiB    0.000 MiB           1               max_depth=5, n_estimators=10, max_features=1),}
+    74                                         
+    75  121.562 MiB    0.000 MiB           2       X, y = make_classification(
+    76  121.562 MiB    0.000 MiB           1           n_samples=N_SAMPLES, n_features=2, n_redundant=0, n_informative=2,
+    77  121.562 MiB    0.000 MiB           1           random_state=1, n_clusters_per_class=1)
+    78                                         
+    79  121.562 MiB    0.000 MiB           2       X_train, X_test, y_train, y_test = train_test_split(
+    80  121.562 MiB    0.000 MiB           1           X, y, test_size=.4, random_state=0)
+    81                                         
+    82                                             #  prepare plots
+    83  138.836 MiB   17.273 MiB           1       fig, [ax_roc, ax_det] = plt.subplots(1, 2, figsize=(11, 5))
+    84                                         
+    85  139.812 MiB    0.000 MiB           3       for name, clf in classifiers.items():
+    86  139.812 MiB    0.516 MiB           2           clf.fit(X_train, y_train)
+    87                                         
+    88  139.812 MiB    0.461 MiB           2           plot_roc_curve(clf, X_test, y_test, ax=ax_roc, name=name)
+    89  139.812 MiB    0.000 MiB           2           plot_det_curve(clf, X_test, y_test, ax=ax_det, name=name)
+    90                                         
+    91  140.172 MiB    0.359 MiB           1       ax_roc.set_title('Receiver Operating Characteristic (ROC) curves')
+    92  140.172 MiB    0.000 MiB           1       ax_det.set_title('Detection Error Tradeoff (DET) curves')
+    93                                         
+    94  140.172 MiB    0.000 MiB           1       ax_roc.grid(linestyle='--')
+    95  140.172 MiB    0.000 MiB           1       ax_det.grid(linestyle='--')
+    96                                         
+    97  140.172 MiB    0.000 MiB           1       plt.legend()
+    98                                             # plt.show()
 
 
-Filename: Test_Case.py
+Filename: Test_Case_2.py
 
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-    78  140.195 MiB  140.195 MiB           1   @profile
-    79                                         def plot_grid_search_digits():
-    80                                             # Loading the Digits dataset
-    81  145.594 MiB    5.398 MiB           1       digits = datasets.load_digits()
-    82                                         
-    83                                             # To apply an classifier on this data, we need to flatten the image, to
-    84                                             # turn the data in a (samples, feature) matrix:
-    85  145.594 MiB    0.000 MiB           1       n_samples = len(digits.images)
-    86  145.594 MiB    0.000 MiB           1       X = digits.images.reshape((n_samples, -1))
-    87  145.594 MiB    0.000 MiB           1       y = digits.target
-    88                                         
-    89                                             # Split the dataset in two equal parts
-    90  145.848 MiB    0.254 MiB           2       X_train, X_test, y_train, y_test = train_test_split(
-    91  145.594 MiB    0.000 MiB           1           X, y, test_size=0.5, random_state=0)
-    92                                         
-    93                                             # Set the parameters by cross-validation
-    94  145.848 MiB    0.000 MiB           3       tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
-    95  145.848 MiB    0.000 MiB           1                           'C': [1, 10, 100, 1000]},
-    96  145.848 MiB    0.000 MiB           1                           {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
-    97                                         
-    98  145.848 MiB    0.000 MiB           1       scores = ['precision', 'recall']
-    99                                         
-   100  146.691 MiB    0.000 MiB           3       for score in scores:
-   101  146.691 MiB    0.000 MiB           2           print("# Tuning hyper-parameters for %s" % score)
-   102  146.691 MiB    0.000 MiB           2           print()
-   103                                         
-   104  146.691 MiB    0.000 MiB           4           clf = GridSearchCV(
-   105  146.691 MiB    0.000 MiB           2               SVC(), tuned_parameters, scoring='%s_macro' % score)
-   106                                                 
-   107  146.691 MiB    0.844 MiB           2           clf.fit(X_train, y_train)
-   108                                         
-   109  146.691 MiB    0.000 MiB           2           print("Best parameters set found on development set:")
-   110  146.691 MiB    0.000 MiB           2           print()
-   111  146.691 MiB    0.000 MiB           2           print(clf.best_params_)
-   112  146.691 MiB    0.000 MiB           2           print()
-   113  146.691 MiB    0.000 MiB           2           print("Grid scores on development set:")
-   114  146.691 MiB    0.000 MiB           2           print()
-   115  146.691 MiB    0.000 MiB           2           means = clf.cv_results_['mean_test_score']
-   116  146.691 MiB    0.000 MiB           2           stds = clf.cv_results_['std_test_score']
-   117  146.691 MiB    0.000 MiB          26           for mean, std, params in zip(means, stds, clf.cv_results_['params']):
-   118  146.691 MiB    0.000 MiB          48               print("%0.3f (+/-%0.03f) for %r"
-   119  146.691 MiB    0.000 MiB          24                   % (mean, std * 2, params))
-   120  146.691 MiB    0.000 MiB           2           print()
-   121                                         
-   122  146.691 MiB    0.000 MiB           2           print("Detailed classification report:")
-   123  146.691 MiB    0.000 MiB           2           print()
-   124  146.691 MiB    0.000 MiB           2           print("The model is trained on the full development set.")
-   125  146.691 MiB    0.000 MiB           2           print("The scores are computed on the full evaluation set.")
-   126  146.691 MiB    0.000 MiB           2           print()
-   127  146.691 MiB    0.000 MiB           2           y_true, y_pred = y_test, clf.predict(X_test)
-   128  146.691 MiB    0.000 MiB           2           print(classification_report(y_true, y_pred))
-   129  146.691 MiB    0.000 MiB           2           print()
+   101  140.172 MiB  140.172 MiB           1   @profile
+   102                                         def plot_grid_search_digits():
+   103                                             #  Loading the Digits dataset
+   104  145.461 MiB    5.289 MiB           1       digits = datasets.load_digits()
+   105                                         
+   106                                             #  To apply an classifier on this data, we need to flatten the image, to
+   107                                             #  turn the data in a (samples, feature) matrix:
+   108  145.461 MiB    0.000 MiB           1       n_samples = len(digits.images)
+   109  145.461 MiB    0.000 MiB           1       X = digits.images.reshape((n_samples, -1))
+   110  145.461 MiB    0.000 MiB           1       y = digits.target
+   111                                         
+   112                                             #  Split the dataset in two equal parts
+   113  145.715 MiB    0.254 MiB           2       X_train, X_test, y_train, y_test = train_test_split(
+   114  145.461 MiB    0.000 MiB           1           X, y, test_size=0.5, random_state=0)
+   115                                         
+   116                                             #  Set the parameters by cross-validation
+   117  145.715 MiB    0.000 MiB           3       tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
+   118  145.715 MiB    0.000 MiB           1                           'C': [1, 10, 100, 1000]},
+   119  145.715 MiB    0.000 MiB           1                           {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+   120                                         
+   121  145.715 MiB    0.000 MiB           1       scores = ['precision', 'recall']
+   122                                         
+   123  146.605 MiB    0.000 MiB           3       for score in scores:
+   124                                                 # # print("#  Tuning hyper-parameters for %s" % score)
+   125                                                 # # print()
+   126                                         
+   127  146.605 MiB    0.000 MiB           4           clf = GridSearchCV(
+   128  146.605 MiB    0.000 MiB           2               SVC(), tuned_parameters, scoring='%s_macro' % score)
+   129  146.605 MiB    0.891 MiB           2           clf.fit(X_train, y_train)
+   130                                         
+   131                                                 # # print("Best parameters set found on development set:")
+   132                                                 # # print()
+   133                                                 # # print(clf.best_params_)
+   134                                                 # # print()
+   135                                                 # # print("Grid scores on development set:")
+   136                                                 # # print()
+   137  146.605 MiB    0.000 MiB           2           means = clf.cv_results_['mean_test_score']
+   138  146.605 MiB    0.000 MiB           2           stds = clf.cv_results_['std_test_score']
+   139                                                 # for mean, std, params in zip(means, stds, clf.cv_results_['params']):
+   140                                                     # # print("%0.3f (+/-%0.03f) for %r"
+   141                                                         # % (mean, std * 2, params))
+   142                                                 # # print()
+   143                                         
+   144                                                 # # print("Detailed classification report:")
+   145                                                 # # print()
+   146                                                 # # print("The model is trained on the full development set.")
+   147                                                 # # print("The scores are computed on the full evaluation set.")
+   148                                                 # # print()
+   149  146.605 MiB    0.000 MiB           2           y_true, y_pred = y_test, clf.predict(X_test)
+   150                                                 # # print(classification_report(y_true, y_pred))
+   151                                                 # # print()
 
 
-Filename: Test_Case.py
-
-Line #    Mem usage    Increment  Occurences   Line Contents
-============================================================
-   132  146.691 MiB  146.691 MiB           1   @profile
-   133                                         def plot_cv_digits():
-   134  147.176 MiB    0.484 MiB           1       X, y = datasets.load_digits(return_X_y=True)
-   135                                         
-   136  147.176 MiB    0.000 MiB           1       svc = svm.SVC(kernel='linear')
-   137  147.176 MiB    0.000 MiB           1       C_s = np.logspace(-10, 0, 10)
-   138                                         
-   139  147.176 MiB    0.000 MiB           1       scores = list()
-   140  147.176 MiB    0.000 MiB           1       scores_std = list()
-   141  147.426 MiB    0.000 MiB          11       for C in C_s:
-   142  147.426 MiB    0.000 MiB          10           svc.C = C
-   143  147.426 MiB    0.250 MiB          10           this_scores = cross_val_score(svc, X, y, n_jobs=1)
-   144  147.426 MiB    0.000 MiB          10           scores.append(np.mean(this_scores))
-   145  147.426 MiB    0.000 MiB          10           scores_std.append(np.std(this_scores))
-   146                                         
-   147                                             # Do the plotting
-   148  147.426 MiB    0.000 MiB           1       import matplotlib.pyplot as plt
-   149  147.426 MiB    0.000 MiB           1       plt.figure()
-   150  147.426 MiB    0.000 MiB           1       plt.semilogx(C_s, scores)
-   151  147.426 MiB    0.000 MiB           1       plt.semilogx(C_s, np.array(scores) + np.array(scores_std), 'b--')
-   152  147.426 MiB    0.000 MiB           1       plt.semilogx(C_s, np.array(scores) - np.array(scores_std), 'b--')
-   153  147.426 MiB    0.000 MiB           1       locs, labels = plt.yticks()
-   154  147.426 MiB    0.000 MiB          15       plt.yticks(locs, list(map(lambda x: "%g" % x, locs)))
-   155  147.426 MiB    0.000 MiB           1       plt.ylabel('CV score')
-   156  147.426 MiB    0.000 MiB           1       plt.xlabel('Parameter C')
-   157  147.426 MiB    0.000 MiB           1       plt.ylim(0, 1.1)
-   158                                             # plt.show()
-
-
-Filename: Test_Case.py
+Filename: Test_Case_2.py
 
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-   161  147.426 MiB  147.426 MiB           1   @profile
-   162                                         def plot_feature_union():
-   163  147.426 MiB    0.000 MiB           1       iris = load_iris()
-   164                                         
-   165  147.426 MiB    0.000 MiB           1       X, y = iris.data, iris.target
-   166                                         
-   167                                             # This dataset is way too high-dimensional. Better do PCA:
-   168  147.426 MiB    0.000 MiB           1       pca = PCA(n_components=2)
-   169                                         
-   170                                             # Maybe some original features were good, too?
-   171  147.426 MiB    0.000 MiB           1       selection = SelectKBest(k=1)
-   172                                         
-   173                                             # Build estimator from PCA and Univariate selection:
-   174                                         
-   175  147.426 MiB    0.000 MiB           1       combined_features = FeatureUnion([("pca", pca), ("univ_select", selection)])
-   176                                         
-   177                                             # Use combined features to transform dataset:
-   178  148.008 MiB    0.582 MiB           1       X_features = combined_features.fit(X, y).transform(X)
-   179  148.008 MiB    0.000 MiB           1       print("Combined space has", X_features.shape[1], "features")
-   180                                         
-   181  148.008 MiB    0.000 MiB           1       svm = SVC(kernel="linear")
-   182                                         
-   183                                             # Do grid search over k, n_components and C:
-   184                                         
-   185  148.008 MiB    0.000 MiB           1       pipeline = Pipeline([("features", combined_features), ("svm", svm)])
+   154  146.605 MiB  146.605 MiB           1   @profile
+   155                                         def plot_cv_digits():
+   156  147.043 MiB    0.438 MiB           1       X, y = datasets.load_digits(return_X_y=True)
+   157                                         
+   158  147.043 MiB    0.000 MiB           1       svc = svm.SVC(kernel='linear')
+   159  147.043 MiB    0.000 MiB           1       C_s = np.logspace(-10, 0, 10)
+   160                                         
+   161  147.043 MiB    0.000 MiB           1       scores = list()
+   162  147.043 MiB    0.000 MiB           1       scores_std = list()
+   163  147.289 MiB    0.000 MiB          11       for C in C_s:
+   164  147.289 MiB    0.000 MiB          10           svc.C = C
+   165  147.289 MiB    0.246 MiB          10           this_scores = cross_val_score(svc, X, y, n_jobs=1)
+   166  147.289 MiB    0.000 MiB          10           scores.append(np.mean(this_scores))
+   167  147.289 MiB    0.000 MiB          10           scores_std.append(np.std(this_scores))
+   168                                         
+   169                                             #  Do the plotting
+   170  147.289 MiB    0.000 MiB           1       import matplotlib.pyplot as plt
+   171  147.289 MiB    0.000 MiB           1       plt.figure()
+   172  147.289 MiB    0.000 MiB           1       plt.semilogx(C_s, scores)
+   173  147.289 MiB    0.000 MiB           1       plt.semilogx(C_s, np.array(scores) + np.array(scores_std), 'b--')
+   174  147.289 MiB    0.000 MiB           1       plt.semilogx(C_s, np.array(scores) - np.array(scores_std), 'b--')
+   175  147.289 MiB    0.000 MiB           1       locs, labels = plt.yticks()
+   176  147.289 MiB    0.000 MiB          15       plt.yticks(locs, list(map(lambda x: "%g" % x, locs)))
+   177  147.289 MiB    0.000 MiB           1       plt.ylabel('CV score')
+   178  147.289 MiB    0.000 MiB           1       plt.xlabel('Parameter C')
+   179  147.289 MiB    0.000 MiB           1       plt.ylim(0, 1.1)
+   180                                             # plt.show()
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   183  147.289 MiB  147.289 MiB           1   @profile
+   184                                         def plot_feature_union():
+   185  147.289 MiB    0.000 MiB           1       iris = load_iris()
    186                                         
-   187  148.008 MiB    0.000 MiB           2       param_grid = dict(features__pca__n_components=[1, 2, 3],
-   188  148.008 MiB    0.000 MiB           1                       features__univ_select__k=[1, 2],
-   189  148.008 MiB    0.000 MiB           1                       svm__C=[0.1, 1, 10])
-   190                                         
-   191  148.008 MiB    0.000 MiB           1       grid_search = GridSearchCV(pipeline, param_grid=param_grid, verbose=10)
-   192  148.008 MiB    0.000 MiB           1       grid_search.fit(X, y)
-   193  148.008 MiB    0.000 MiB           1       print(grid_search.best_estimator_)
-
-
-Filename: Test_Case.py
-
-Line #    Mem usage    Increment  Occurences   Line Contents
-============================================================
-   196  148.008 MiB  148.008 MiB           1   @profile
-   197                                         def plot_pca_vs_lda():
-   198  148.008 MiB    0.000 MiB           1       iris = datasets.load_iris()
-   199                                         
-   200  148.008 MiB    0.000 MiB           1       X = iris.data
-   201  148.008 MiB    0.000 MiB           1       y = iris.target
-   202  148.008 MiB    0.000 MiB           1       target_names = iris.target_names
-   203                                         
-   204  148.008 MiB    0.000 MiB           1       pca = PCA(n_components=2)
-   205  148.008 MiB    0.000 MiB           1       X_r = pca.fit(X).transform(X)
+   187  147.289 MiB    0.000 MiB           1       X, y = iris.data, iris.target
+   188                                         
+   189                                             #  This dataset is way too high-dimensional. Better do PCA:
+   190  147.289 MiB    0.000 MiB           1       pca = PCA(n_components=2)
+   191                                         
+   192                                             #  Maybe some original features were good, too?
+   193  147.289 MiB    0.000 MiB           1       selection = SelectKBest(k=1)
+   194                                         
+   195                                             #  Build estimator from PCA and Univariate selection:
+   196                                         
+   197  147.289 MiB    0.000 MiB           1       combined_features = FeatureUnion([("pca", pca), ("univ_select", selection)])
+   198                                         
+   199                                             #  Use combined features to transform dataset:
+   200  147.898 MiB    0.609 MiB           1       X_features = combined_features.fit(X, y).transform(X)
+   201                                             # # print("Combined space has", X_features.shape[1], "features")
+   202                                         
+   203  147.898 MiB    0.000 MiB           1       svm = SVC(kernel="linear")
+   204                                         
+   205                                             #  Do grid search over k, n_components and C:
    206                                         
-   207  148.008 MiB    0.000 MiB           1       lda = LinearDiscriminantAnalysis(n_components=2)
-   208  148.008 MiB    0.000 MiB           1       X_r2 = lda.fit(X, y).transform(X)
-   209                                         
-   210                                             # Percentage of variance explained for each components
-   211  148.008 MiB    0.000 MiB           2       print('explained variance ratio (first two components): %s'
-   212  148.008 MiB    0.000 MiB           1           % str(pca.explained_variance_ratio_))
-   213                                         
-   214  148.605 MiB    0.598 MiB           1       plt.figure()
-   215  148.605 MiB    0.000 MiB           1       colors = ['navy', 'turquoise', 'darkorange']
-   216  148.605 MiB    0.000 MiB           1       lw = 2
-   217                                         
-   218  148.605 MiB    0.000 MiB           4       for color, i, target_name in zip(colors, [0, 1, 2], target_names):
-   219  148.605 MiB    0.000 MiB           6           plt.scatter(X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=.8, lw=lw,
-   220  148.605 MiB    0.000 MiB           3                       label=target_name)
-   221  148.605 MiB    0.000 MiB           1       plt.legend(loc='best', shadow=False, scatterpoints=1)
-   222  148.605 MiB    0.000 MiB           1       plt.title('PCA of IRIS dataset')
-   223                                         
-   224  148.605 MiB    0.000 MiB           1       plt.figure()
-   225  148.605 MiB    0.000 MiB           4       for color, i, target_name in zip(colors, [0, 1, 2], target_names):
-   226  148.605 MiB    0.000 MiB           6           plt.scatter(X_r2[y == i, 0], X_r2[y == i, 1], alpha=.8, color=color,
-   227  148.605 MiB    0.000 MiB           3                       label=target_name)
-   228  148.605 MiB    0.000 MiB           1       plt.legend(loc='best', shadow=False, scatterpoints=1)
-   229  148.605 MiB    0.000 MiB           1       plt.title('LDA of IRIS dataset')
-   230                                         
-   231                                             # plt.show()
+   207  147.898 MiB    0.000 MiB           1       pipeline = Pipeline([("features", combined_features), ("svm", svm)])
+   208                                         
+   209  147.898 MiB    0.000 MiB           2       param_grid = dict(features__pca__n_components=[1, 2, 3],
+   210  147.898 MiB    0.000 MiB           1                       features__univ_select__k=[1, 2],
+   211  147.898 MiB    0.000 MiB           1                       svm__C=[0.1, 1, 10])
+   212                                         
+   213  147.898 MiB    0.000 MiB           1       grid_search = GridSearchCV(pipeline, param_grid=param_grid, verbose=10)
+   214                                             # grid_search.fit(X, y)
+   215                                             # # print(grid_search.best_estimator_)
 
 
-Filename: Test_Case.py
+Filename: Test_Case_2.py
 
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-   233  121.457 MiB  121.457 MiB           1   @profile
-   234                                         def main():
-   235  140.195 MiB  140.195 MiB           1     plot_det()
-   236  146.691 MiB  146.691 MiB           1     plot_grid_search_digits()
-   237  147.426 MiB  147.426 MiB           1     plot_cv_digits()
-   238  148.008 MiB  148.008 MiB           1     plot_feature_union()
-   239  148.605 MiB  148.605 MiB           1     plot_pca_vs_lda()
+   218  147.898 MiB  147.898 MiB           1   @profile
+   219                                         def plot_pca_vs_lda():
+   220  147.898 MiB    0.000 MiB           1       iris = datasets.load_iris()
+   221                                         
+   222  147.898 MiB    0.000 MiB           1       X = iris.data
+   223  147.898 MiB    0.000 MiB           1       y = iris.target
+   224  147.898 MiB    0.000 MiB           1       target_names = iris.target_names
+   225                                         
+   226  147.898 MiB    0.000 MiB           1       pca = PCA(n_components=2)
+   227  147.898 MiB    0.000 MiB           1       X_r = pca.fit(X).transform(X)
+   228                                         
+   229  147.898 MiB    0.000 MiB           1       lda = LinearDiscriminantAnalysis(n_components=2)
+   230  147.898 MiB    0.000 MiB           1       X_r2 = lda.fit(X, y).transform(X)
+   231                                         
+   232                                             #  Percentage of variance explained for each components
+   233                                             # # print('explained variance ratio (first two components): %s'
+   234                                                 # % str(pca.explained_variance_ratio_))
+   235                                         
+   236  147.898 MiB    0.000 MiB           1       plt.figure()
+   237  147.898 MiB    0.000 MiB           1       colors = ['navy', 'turquoise', 'darkorange']
+   238  147.898 MiB    0.000 MiB           1       lw = 2
+   239                                         
+   240  147.898 MiB    0.000 MiB           4       for color, i, target_name in zip(colors, [0, 1, 2], target_names):
+   241  147.898 MiB    0.000 MiB           6           plt.scatter(X_r[y == i, 0], X_r[y == i, 1], color=color, alpha=.8, lw=lw,
+   242  147.898 MiB    0.000 MiB           3                       label=target_name)
+   243  147.898 MiB    0.000 MiB           1       plt.legend(loc='best', shadow=False, scatterpoints=1)
+   244  147.898 MiB    0.000 MiB           1       plt.title('PCA of IRIS dataset')
+   245                                         
+   246  147.898 MiB    0.000 MiB           1       plt.figure()
+   247  147.898 MiB    0.000 MiB           4       for color, i, target_name in zip(colors, [0, 1, 2], target_names):
+   248  147.898 MiB    0.000 MiB           6           plt.scatter(X_r2[y == i, 0], X_r2[y == i, 1], alpha=.8, color=color,
+   249  147.898 MiB    0.000 MiB           3                       label=target_name)
+   250  147.898 MiB    0.000 MiB           1       plt.legend(loc='best', shadow=False, scatterpoints=1)
+   251  147.898 MiB    0.000 MiB           1       plt.title('LDA of IRIS dataset')
+   252                                         
+   253                                             # plt.show()
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   256  147.898 MiB  147.898 MiB           1   @profile
+   257                                         def tree_regression_depth_200():
+   258                                             #  Create a random dataset
+   259  147.898 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   260  148.973 MiB    1.074 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   261  151.305 MiB    2.332 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   262  151.305 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   263                                         
+   264                                             #  Fit regression model
+   265  151.305 MiB    0.000 MiB           1       regr_1 = DecisionTreeRegressor(max_depth=200)
+   266  165.355 MiB   14.051 MiB           1       regr_1.fit(X, y)
+   267                                         
+   268                                             #  Predict
+   269  165.355 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   270  165.355 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   273  147.055 MiB  147.055 MiB           1   @profile
+   274                                         def tree_regression_depth_150():
+   275                                             #  Create a random dataset
+   276  147.055 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   277  148.340 MiB    1.285 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   278  151.434 MiB    3.094 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   279  151.434 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   280                                         
+   281                                             #  Fit regression model
+   282  151.434 MiB    0.000 MiB           1       regr_1 = DecisionTreeRegressor(max_depth=150)
+   283  172.578 MiB   21.145 MiB           1       regr_1.fit(X, y)
+   284                                         
+   285                                             #  Predict
+   286  172.578 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   287  172.578 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   290  161.906 MiB  161.906 MiB           1   @profile
+   291                                         def tree_regression_depth_170():
+   292                                             #  Create a random dataset
+   293  161.906 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   294  161.906 MiB    0.000 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   295  161.906 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   296  161.906 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   297                                         
+   298                                             #  Fit regression model
+   299  161.906 MiB    0.000 MiB           1       regr_1 = DecisionTreeRegressor(max_depth=170)
+   300  172.578 MiB   10.672 MiB           1       regr_1.fit(X, y)
+   301                                         
+   302                                             #  Predict
+   303  172.578 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   304  172.578 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   307  161.906 MiB  161.906 MiB           1   @profile
+   308                                         def tree_regression_compare_2():
+   309                                             #  Create a random dataset
+   310  161.906 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   311  161.906 MiB    0.000 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   312  161.906 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   313  161.906 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   314                                         
+   315                                             #  Fit regression model
+   316  161.906 MiB    0.000 MiB           1       regr_1 = DecisionTreeRegressor(max_depth=200)
+   317  161.906 MiB    0.000 MiB           1       regr_2 = DecisionTreeRegressor(max_depth=500)
+   318  172.578 MiB   10.672 MiB           1       regr_1.fit(X, y)
+   319  186.297 MiB   13.719 MiB           1       regr_2.fit(X, y)
+   320                                         
+   321                                             #  Predict
+   322  186.297 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   323  186.297 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   324  186.297 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   327  164.953 MiB  164.953 MiB           1   @profile
+   328                                         def tree_regression_compare_3():
+   329                                             #  Create a random dataset
+   330  164.953 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   331  164.953 MiB    0.000 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   332  164.953 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   333  164.953 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   334                                         
+   335                                             #  Fit regression model
+   336  164.953 MiB    0.000 MiB           1       regr_1 = DecisionTreeRegressor(max_depth=170)
+   337  164.953 MiB    0.000 MiB           1       regr_2 = DecisionTreeRegressor(max_depth=80)
+   338  164.953 MiB    0.000 MiB           1       regr_3 = DecisionTreeRegressor(max_depth=95)
+   339  175.625 MiB   10.672 MiB           1       regr_1.fit(X, y)
+   340  183.547 MiB    7.922 MiB           1       regr_2.fit(X, y)
+   341  195.332 MiB   11.785 MiB           1       regr_3.fit(X, y)
+   342                                         
+   343                                             #  Predict
+   344  195.332 MiB    0.000 MiB           1       X_test = np.arange(-100.0, 100.0, 0.01)[:, np.newaxis]
+   345  195.332 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   346  195.332 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   347  195.332 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   350  147.055 MiB  147.055 MiB           1   @profile
+   351                                         def tree_regression_compare_4():
+   352                                             #  Create a random dataset
+   353  147.055 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   354  148.340 MiB    1.285 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   355  151.434 MiB    3.094 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   356  151.434 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   357                                         
+   358                                             #  Fit regression model
+   359  151.434 MiB    0.000 MiB           1       regr_1 = DecisionTreeRegressor(max_depth=200)
+   360  151.434 MiB    0.000 MiB           1       regr_2 = DecisionTreeRegressor(max_depth=300)
+   361  151.434 MiB    0.000 MiB           1       regr_3 = DecisionTreeRegressor(max_depth=40)
+   362  151.434 MiB    0.000 MiB           1       regr_4 = DecisionTreeRegressor(max_depth=190)
+   363  172.578 MiB   21.145 MiB           1       regr_1.fit(X, y)
+   364  186.297 MiB   13.719 MiB           1       regr_2.fit(X, y)
+   365  186.297 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   366  204.695 MiB   18.398 MiB           1       regr_4.fit(X, y)
+   367                                         
+   368                                             #  Predict
+   369  204.695 MiB    0.000 MiB           1       X_test = np.arange(-100.0, 100.0, 0.01)[:, np.newaxis]
+   370  204.695 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   371  204.695 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   372  204.695 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+   373  204.695 MiB    0.000 MiB           1       y_4 = regr_4.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   376  152.547 MiB  152.547 MiB           1   @profile
+   377                                         def linear_regression():
+   378                                             #  Create a random dataset
+   379  152.547 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   380  162.141 MiB    9.594 MiB           1       X = np.sort(2000000 * rng.rand(1000000, 1) - 1000000, axis=0)
+   381  192.484 MiB   30.344 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   382  192.484 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(200000, 2))
+   383                                         
+   384                                             #  Fit regression model
+   385  192.484 MiB    0.000 MiB           1       regr_1 = LinearRegression()
+   386  208.129 MiB   15.645 MiB           1       regr_1.fit(X, y)
+   387                                         
+   388                                             #  Predict
+   389  208.129 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   390  208.129 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   393  154.848 MiB  154.848 MiB           1   @profile
+   394                                         def random_forest_regression():
+   395                                             #  Create a random dataset
+   396  154.848 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   397  154.848 MiB    0.000 MiB           1       X = np.sort(20000 * rng.rand(10000, 1) - 10000, axis=0)
+   398  155.102 MiB    0.254 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   399  155.102 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(2000, 2))
+   400                                         
+   401                                             #  Fit regression model
+   402  155.102 MiB    0.000 MiB           1       regr_1 = RandomForestRegressor(n_estimators=20, max_depth=5)
+   403  155.359 MiB    0.258 MiB           1       regr_1.fit(X, y)
+   404                                         
+   405                                             #  Predict
+   406  155.359 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   407  155.359 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   410  155.359 MiB  155.359 MiB           1   @profile
+   411                                         def random_forest_regression_compare_2():
+   412                                             #  Create a random dataset
+   413  155.359 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   414  155.359 MiB    0.000 MiB           1       X = np.sort(20000 * rng.rand(10000, 1) - 10000, axis=0)
+   415  155.359 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   416  155.359 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(2000, 2))
+   417                                         
+   418                                             #  Fit regression model
+   419  155.359 MiB    0.000 MiB           1       regr_1 = RandomForestRegressor(n_estimators=20, max_depth=5)
+   420  155.359 MiB    0.000 MiB           1       regr_2 = RandomForestRegressor(n_estimators=20, max_depth=10)
+   421  155.359 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   422  155.875 MiB    0.516 MiB           1       regr_2.fit(X, y)
+   423                                         
+   424                                             #  Predict
+   425  155.875 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   426  155.875 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   427  155.875 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   430  155.875 MiB  155.875 MiB           1   @profile
+   431                                         def random_forest_regression_compare_3():
+   432                                             #  Create a random dataset
+   433  155.875 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   434  155.875 MiB    0.000 MiB           1       X = np.sort(20000 * rng.rand(10000, 1) - 10000, axis=0)
+   435  155.875 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   436  155.875 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(2000, 2))
+   437                                         
+   438                                             #  Fit regression model
+   439  155.875 MiB    0.000 MiB           1       regr_1 = RandomForestRegressor(n_estimators=20, max_depth=5)
+   440  155.875 MiB    0.000 MiB           1       regr_2 = RandomForestRegressor(n_estimators=20, max_depth=10)
+   441  155.875 MiB    0.000 MiB           1       regr_3 = RandomForestRegressor(n_estimators=20, max_depth=15)
+   442  155.875 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   443  155.875 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   444  157.938 MiB    2.062 MiB           1       regr_3.fit(X, y)
+   445                                         
+   446                                             #  Predict
+   447  157.938 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   448  157.938 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   449  157.938 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   450  157.938 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   453  157.938 MiB  157.938 MiB           1   @profile
+   454                                         def random_forest_regression_compare_4():
+   455                                             #  Create a random dataset
+   456  157.938 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   457  157.938 MiB    0.000 MiB           1       X = np.sort(20000 * rng.rand(10000, 1) - 10000, axis=0)
+   458  157.938 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   459  157.938 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(2000, 2))
+   460                                         
+   461                                             #  Fit regression model
+   462  157.938 MiB    0.000 MiB           1       regr_1 = RandomForestRegressor(n_estimators=20, max_depth=5)
+   463  157.938 MiB    0.000 MiB           1       regr_2 = RandomForestRegressor(n_estimators=20, max_depth=10)
+   464  157.938 MiB    0.000 MiB           1       regr_3 = RandomForestRegressor(n_estimators=20, max_depth=15)
+   465  157.938 MiB    0.000 MiB           1       regr_4 = RandomForestRegressor(n_estimators=20, max_depth=17)
+   466  157.938 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   467  157.938 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   468  157.938 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   469  160.516 MiB    2.578 MiB           1       regr_4.fit(X, y)
+   470                                         
+   471                                             #  Predict
+   472  160.516 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   473  160.516 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   474  160.516 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   475  160.516 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+   476  160.516 MiB    0.000 MiB           1       y_4 = regr_4.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   480  160.516 MiB  160.516 MiB           1   @profile
+   481                                         def random_forest_regression_compare_5():
+   482                                             #  Create a random dataset
+   483  160.516 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   484  160.516 MiB    0.000 MiB           1       X = np.sort(20000 * rng.rand(10000, 1) - 10000, axis=0)
+   485  160.516 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   486  160.516 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(2000, 2))
+   487                                         
+   488                                             #  Fit regression model
+   489  160.516 MiB    0.000 MiB           1       regr_1 = RandomForestRegressor(n_estimators=20, max_depth=5)
+   490  160.516 MiB    0.000 MiB           1       regr_2 = RandomForestRegressor(n_estimators=20, max_depth=10)
+   491  160.516 MiB    0.000 MiB           1       regr_3 = RandomForestRegressor(n_estimators=20, max_depth=15)
+   492  160.516 MiB    0.000 MiB           1       regr_4 = RandomForestRegressor(n_estimators=20, max_depth=17)
+   493  160.516 MiB    0.000 MiB           1       regr_5 = RandomForestRegressor(n_estimators=20, max_depth=20)
+   494  160.516 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   495  160.516 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   496  160.516 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   497  161.031 MiB    0.516 MiB           1       regr_4.fit(X, y)
+   498  164.898 MiB    3.867 MiB           1       regr_5.fit(X, y)
+   499                                         
+   500                                             #  Predict
+   501  164.898 MiB    0.000 MiB           1       X_test = np.arange(-100.0, 100.0, 0.01)[:, np.newaxis]
+   502  165.672 MiB    0.773 MiB           1       y_1 = regr_1.predict(X_test)
+   503  165.910 MiB    0.238 MiB           1       y_2 = regr_2.predict(X_test)
+   504  166.426 MiB    0.516 MiB           1       y_3 = regr_3.predict(X_test)
+   505  166.684 MiB    0.258 MiB           1       y_4 = regr_4.predict(X_test)
+   506  166.941 MiB    0.258 MiB           1       y_5 = regr_5.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   509  166.941 MiB  166.941 MiB           1   @profile
+   510                                         def ridge_regression():
+   511                                             #  Create a random dataset
+   512  166.941 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   513  173.512 MiB    6.570 MiB           1       X = np.sort(2000000 * rng.rand(1000000, 1) - 1000000, axis=0)
+   514  204.172 MiB   30.660 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   515  204.172 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(200000, 2))
+   516                                         
+   517                                             #  Fit regression model
+   518  204.172 MiB    0.000 MiB           1       regr_1 = Ridge(alpha=1.0)
+   519  211.691 MiB    7.520 MiB           1       regr_1.fit(X, y)
+   520                                         
+   521                                             #  Predict
+   522  211.691 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   523  211.691 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   526  166.586 MiB  166.586 MiB           1   @profile
+   527                                         def ridge_regression_compare_2():
+   528                                             #  Create a random dataset
+   529  166.586 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   530  167.098 MiB    0.512 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   531  170.191 MiB    3.094 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   532  170.191 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   533                                         
+   534                                             #  Fit regression model
+   535  170.191 MiB    0.000 MiB           1       regr_1 = Ridge(alpha=1.0)
+   536  170.191 MiB    0.000 MiB           1       regr_2 = Ridge(alpha=2)
+   537  170.191 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   538  170.191 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   539                                         
+   540                                             #  Predict
+   541  170.191 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   542  170.191 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   543  170.191 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   546  170.191 MiB  170.191 MiB           1   @profile
+   547                                         def ridge_regression_compare_3():
+   548                                             #  Create a random dataset
+   549  170.191 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   550  181.527 MiB   11.336 MiB           1       X = np.sort(2000000 * rng.rand(1000000, 1) - 1000000, axis=0)
+   551  212.195 MiB   30.668 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   552  212.195 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(200000, 2))
+   553                                         
+   554                                             #  Fit regression model
+   555  212.195 MiB    0.000 MiB           1       regr_1 = Ridge(alpha=1.0)
+   556  212.195 MiB    0.000 MiB           1       regr_2 = Ridge(alpha=30)
+   557  212.195 MiB    0.000 MiB           1       regr_3 = Ridge(alpha=10)
+   558  212.195 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   559  212.195 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   560  212.195 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   561                                         
+   562                                             #  Predict
+   563  212.195 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   564  212.195 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   565  212.195 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   566  212.195 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   569  166.586 MiB  166.586 MiB           1   @profile
+   570                                         def ridge_regression_compare_4():
+   571                                             #  Create a random dataset
+   572  166.586 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   573  167.098 MiB    0.512 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   574  170.191 MiB    3.094 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   575  170.191 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   576                                         
+   577                                             #  Fit regression model
+   578  170.191 MiB    0.000 MiB           1       regr_1 = Ridge(alpha=1.0)
+   579  170.191 MiB    0.000 MiB           1       regr_2 = Ridge(alpha=30)
+   580  170.191 MiB    0.000 MiB           1       regr_3 = Ridge(alpha=80)
+   581  170.191 MiB    0.000 MiB           1       regr_4 = Ridge(alpha=86)
+   582  170.191 MiB    0.000 MiB           1       regr_1.fit(X, y)
+   583  170.191 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   584  170.191 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   585  170.191 MiB    0.000 MiB           1       regr_4.fit(X, y)
+   586                                         
+   587                                             #  Predict
+   588  170.191 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   589  170.191 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   590  170.191 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   591  170.191 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+   592  170.191 MiB    0.000 MiB           1       y_4 = regr_4.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   595  170.191 MiB  170.191 MiB           1   @profile
+   596                                         def lasso_regression():
+   597                                             #  Create a random dataset
+   598  170.191 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   599  170.191 MiB    0.000 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   600  170.191 MiB    0.000 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   601  170.191 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   602                                         
+   603                                             #  Fit regression model
+   604  170.191 MiB    0.000 MiB           1       regr_1 = Lasso(alpha=90)
+   605  171.391 MiB    1.199 MiB           1       regr_1.fit(X, y)
+   606                                         
+   607                                             #  Predict
+   608  171.391 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   609  171.391 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   612  171.391 MiB  171.391 MiB           1   @profile
+   613                                         def lasso_regression_compare_2():
+   614                                             #  Create a random dataset
+   615  171.391 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   616  182.020 MiB   10.629 MiB           1       X = np.sort(2000000 * rng.rand(1000000, 1) - 1000000, axis=0)
+   617  212.430 MiB   30.410 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   618  212.430 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(200000, 2))
+   619                                         
+   620                                             #  Fit regression model
+   621  212.430 MiB    0.000 MiB           1       regr_1 = Lasso(alpha=90)
+   622  212.430 MiB    0.000 MiB           1       regr_2 = Lasso(alpha=180)
+   623  223.562 MiB   11.133 MiB           1       regr_1.fit(X, y)
+   624  223.562 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   625                                         
+   626                                             #  Predict
+   627  223.562 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   628  223.562 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   629  223.562 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   632  170.375 MiB  170.375 MiB           1   @profile
+   633                                         def lasso_regression_compare_3():
+   634                                             #  Create a random dataset
+   635  170.375 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   636  170.887 MiB    0.512 MiB           1       X = np.sort(200000 * rng.rand(100000, 1) - 100000, axis=0)
+   637  173.980 MiB    3.094 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   638  173.980 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(20000, 2))
+   639                                         
+   640                                             #  Fit regression model
+   641  173.980 MiB    0.000 MiB           1       regr_1 = Lasso(alpha=1.0)
+   642  173.980 MiB    0.000 MiB           1       regr_2 = Lasso(alpha=25)
+   643  173.980 MiB    0.000 MiB           1       regr_3 = Lasso(alpha=115)
+   644  174.754 MiB    0.773 MiB           1       regr_1.fit(X, y)
+   645  174.754 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   646  174.754 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   647                                             
+   648                                             #  Predict
+   649  174.754 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   650  174.754 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   651  174.754 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   652  174.754 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   655  174.754 MiB  174.754 MiB           1   @profile
+   656                                         def lasso_regression_compare_4():
+   657                                             #  Create a random dataset
+   658  174.754 MiB    0.000 MiB           1       rng = np.random.RandomState(1)
+   659  185.383 MiB   10.629 MiB           1       X = np.sort(2000000 * rng.rand(1000000, 1) - 1000000, axis=0)
+   660  215.793 MiB   30.410 MiB           1       y = np.array([np.pi * np.sin(X).ravel(), np.pi * np.cos(X).ravel()]).T
+   661  215.793 MiB    0.000 MiB           1       y[::5, :] += (0.5 - rng.rand(200000, 2))
+   662                                         
+   663                                             #  Fit regression model
+   664  215.793 MiB    0.000 MiB           1       regr_1 = Lasso(alpha=100)
+   665  215.793 MiB    0.000 MiB           1       regr_2 = Lasso(alpha=12)
+   666  215.793 MiB    0.000 MiB           1       regr_3 = Lasso(alpha=17)
+   667  215.793 MiB    0.000 MiB           1       regr_4 = Lasso(alpha=152)
+   668  223.574 MiB    7.781 MiB           1       regr_1.fit(X, y)
+   669  223.574 MiB    0.000 MiB           1       regr_2.fit(X, y)
+   670  223.574 MiB    0.000 MiB           1       regr_3.fit(X, y)
+   671  223.574 MiB    0.000 MiB           1       regr_4.fit(X, y)
+   672                                         
+   673                                             #  Predict
+   674  223.574 MiB    0.000 MiB           1       X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
+   675  223.574 MiB    0.000 MiB           1       y_1 = regr_1.predict(X_test)
+   676  223.574 MiB    0.000 MiB           1       y_2 = regr_2.predict(X_test)
+   677  223.574 MiB    0.000 MiB           1       y_3 = regr_3.predict(X_test)
+   678  223.574 MiB    0.000 MiB           1       y_4 = regr_4.predict(X_test)
+
+
+Filename: Test_Case_2.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   681  121.562 MiB  121.562 MiB           1   @profile
+   682                                         def main():
+   683                                         
+   684                                             # Basic complete applications
+   685  140.172 MiB  140.172 MiB           1       plot_det()
+   686                                             # print ("plot_det() finished \n")
+   687  146.605 MiB  146.605 MiB           1       plot_grid_search_digits()
+   688                                             # print ("plot_grid_search_digits() finished \n")
+   689  147.289 MiB  147.289 MiB           1       plot_cv_digits()
+   690                                             # print ("plot_cv_digits() finished \n")
+   691  147.898 MiB  147.898 MiB           1       plot_feature_union()
+   692                                             # print ("plot_feature_union() finished \n")
+   693  147.898 MiB  147.898 MiB           1       plot_pca_vs_lda()
+   694                                             # print ("plot_pca_vs_lda() finished \n")
+   695                                         
+   696                                             # Tree regression models
+   697  147.055 MiB  147.055 MiB           1       tree_regression_depth_200()
+   698                                             # print ("tree_regression_depth_200() finished \n")
+   699  161.906 MiB  161.906 MiB           1       tree_regression_depth_150()
+   700                                             # print ("tree_regression_depth_3() finished \n")
+   701  161.906 MiB  161.906 MiB           1       tree_regression_depth_170()
+   702                                             # print ("tree_regression_depth_4() finished \n")
+   703  164.953 MiB  164.953 MiB           1       tree_regression_compare_2()
+   704                                             # print ("tree_regression_compare_2() finished \n")
+   705  147.055 MiB  147.055 MiB           1       tree_regression_compare_3()
+   706                                             # print ("tree_regression_compare_3() finished \n")
+   707  152.547 MiB  152.547 MiB           1       tree_regression_compare_4()
+   708                                             # print ("tree_regression_compare_4() finished \n")
+   709                                         
+   710                                             # Linear regression models
+   711  154.848 MiB  154.848 MiB           1       linear_regression()
+   712                                             # print ("linear_regression() finished \n")
+   713                                             
+   714                                             # Random Forest regression models
+   715  155.359 MiB  155.359 MiB           1       random_forest_regression()
+   716                                             # print ("random_forest_regression() finished \n")
+   717  155.875 MiB  155.875 MiB           1       random_forest_regression_compare_2()
+   718                                             # print ("random_forest_regression_compare_2() finished \n")
+   719  157.938 MiB  157.938 MiB           1       random_forest_regression_compare_3()
+   720                                             # print ("random_forest_regression_compare_3() finished \n")
+   721  160.516 MiB  160.516 MiB           1       random_forest_regression_compare_4()
+   722                                             # print ("random_forest_regression_compare_4() finished \n")
+   723  166.941 MiB  166.941 MiB           1       random_forest_regression_compare_5()
+   724                                             # print ("random_forest_regression_compare_5() finished \n")
+   725                                         
+   726                                             # Ridge regression models
+   727  166.586 MiB  166.586 MiB           1       ridge_regression()
+   728                                             # print ("ridge_regression() finished \n")
+   729  170.191 MiB  170.191 MiB           1       ridge_regression_compare_2()
+   730                                             # print ("ridge_regression_compare_2() finished \n")
+   731  166.586 MiB  166.586 MiB           1       ridge_regression_compare_3()
+   732                                             # print ("ridge_regression_compare_3() finished \n")
+   733  170.191 MiB  170.191 MiB           1       ridge_regression_compare_4()
+   734                                             # print ("ridge_regression_compare_4() finished \n")
+   735                                         
+   736                                             # Lasso regression models
+   737  171.391 MiB  171.391 MiB           1       lasso_regression()
+   738                                             # print ("lasso_regression() finished \n")
+   739  170.375 MiB  170.375 MiB           1       lasso_regression_compare_2()
+   740                                             # print ("lasso_regression_compare_2() finished \n")
+   741  174.754 MiB  174.754 MiB           1       lasso_regression_compare_3()
+   742                                             # print ("lasso_regression_compare_3() finished \n")
+   743  170.375 MiB  170.375 MiB           1       lasso_regression_compare_4()
+   744                                             # print ("lasso_regression_compare_4() finished \n")
 
 

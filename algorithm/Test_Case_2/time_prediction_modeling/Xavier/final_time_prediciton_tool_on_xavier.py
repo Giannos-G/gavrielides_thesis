@@ -7,15 +7,16 @@ import numpy as np
 
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 def main():
     #--------------Uploading dataset--------------
-    data = pd.read_csv("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/energy_prediction_modeling/Jetson_xavier_nx_00/profiling_jetson_xavier_nx_00_combined.csv")
+    data = pd.read_csv("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Xavier/Time_profiling_Xavier_details.csv")
     data.drop("PyScript", inplace=True, axis=1) # Delete 1st column => filenames of samples
 
     #------------------Remove the outliers------------------
-    Q1 = data.quantile(0.399)
-    Q3 = data.quantile(0.601)
+    Q1 = data.quantile(0.35)
+    Q3 = data.quantile(0.65)
     IQR = Q3 - Q1
     data_out = data[~((data < (Q1-1.5*IQR)) | (data > (Q3 +1.5*IQR))).any(axis=1)]
 
@@ -23,14 +24,14 @@ def main():
     data = data_out.copy()
 
     #--------------Construct the target column--------------
-    target_column = data['Energy(Joule)']
+    target_column = data['Time on Xavier(s)']
 
     #--------------Construct the data column--------------
-    data.drop("Energy(Joule)", inplace=True, axis=1)
+    data.drop("Time on Xavier(s)", inplace=True, axis=1)
     #===============================================================================
-    #--------------Decision Tree-------------- 
-    dt = DecisionTreeRegressor(splitter='best', max_depth=5)
-    dt.fit(data, target_column)
+    #--------------Decision Tree Regression-------------- 
+    rf = DecisionTreeRegressor()
+    rf.fit(data, target_column)
 
     #--------------Predict data--------------
     predict_table = []
@@ -49,9 +50,8 @@ def main():
 
     predict_table = predict_table.astype(float)
 
-    # print ("Predict table", predict_table)
-    y_pred_lr_test = dt.predict(predict_table)
-    y_pred_lr_test = abs(y_pred_lr_test)
+    y_pred_rf_test = rf.predict(predict_table)
+    y_pred_rf_test = abs(y_pred_rf_test)
 
     # Get number of functions
     file = open("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/python_profiling/App_Info_Output_File_CSV.csv")
@@ -62,14 +62,14 @@ def main():
     number_of_functions = int(number_of_functions)
 
     for i in range(number_of_functions):
-        print("My energy prediction for function--> ", info_table[i][0], "<-- is: \n", y_pred_lr_test[i],"(Joule)")
+        print("My time prediction for function--> ", info_table[i][0], "<-- on Jetson is: \n", y_pred_rf_test[i],"(s)")
 
-    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/energy_prediction_modeling/Jetson_xavier_nx_00/Predictions_jetson_xavier_nx_00.csv', 'w', newline='')as f:
+    with open('/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case/time_prediction_modeling/Xavier/Time_Predictions_on_Xavier.csv', 'w', newline='')as f:
         thewriter=csv.writer(f)
-        thewriter.writerow(['Function Name', 'Energy Prediction (Joule)'])
+        thewriter.writerow(['Function Name', 'Time on Xavier Prediction (s)'])
         for i in range(number_of_functions):
             print(info_table[i][0])
-            thewriter.writerow([info_table[i][0], y_pred_lr_test[i]])
+            thewriter.writerow([info_table[i][0], y_pred_rf_test[i]])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,7 @@
+Function Name,Energy Prediction (Joule)
+main,5.165044455445545
+plot_pca_vs_lda,12.355472063997144
+plot_feature_union,5.165044455445545
+plot_cv_digits,5.165044455445545
+plot_grid_search_digits,5.165044455445545
+plot_det,5.165044455445545

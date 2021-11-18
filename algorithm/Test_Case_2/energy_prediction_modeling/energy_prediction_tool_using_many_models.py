@@ -240,14 +240,14 @@ y_pos = np.arange(len(methods))
 plt.bar(y_pos, errors)
 plt.xticks(y_pos, methods, rotation = 90, size = 8)
 plt.subplots_adjust(bottom=0.35)
-plt.ylim(450,2100)
+plt.ylim(450,470)
 plt.title('Barplot of MS Errors')
 plt.show()
 
 #--------------Predicted and Actual Values--------------
-plt.title('Predicted and Actual Values')
+plt.title('Predicted and Actual Values using Linear Regression')
 my_x_axis = []
-for i in range(0,len(y_pred_pl_test)):
+for i in range(0,len(y_pred_lr_test)):
         my_x_axis.append(i)
 
 plt.scatter(my_x_axis, y_test, color = 'red', label = 'Actual Values')
@@ -262,10 +262,11 @@ x = np.arange(len(my_x_axis))
 width = 0.35
 fig, ax = plt.subplots()
 rects1 = ax.bar(x-width/2, y_test, width, label = "Actual Values")
-rects2 = ax.bar(x+width/2, y_pred_pl_test, width, label = "Predicted Values")
+rects2 = ax.bar(x+width/2, y_pred_lr_test, width, label = "Predicted Values")
 
 ax.set_ylabel('Energy(Joules)')
 ax.set_title('Predicted and Actual Values')
+plt.title('Predicted and Actual Values using Linear Regression')
 ax.set_xticks(x)
 ax.set_xticklabels(my_x_axis)
 ax.legend()
@@ -276,8 +277,8 @@ fig.tight_layout()
 plt.show()
 
 #--------------Predicted and Actual Values Error--------------
-plt.stem(my_x_axis, abs(y_pred_pl_test-y_test))
-plt.title('Absolute Actual Error')
+plt.stem(my_x_axis, abs(y_pred_lr_test-y_test))
+plt.title('Absolute Actual Error using Linear Regression')
 plt.ylabel('Energy(Joule)')
 plt.xlabel('Test Case')
 plt.show()

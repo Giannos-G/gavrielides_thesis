@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  my-thesis-service-xavier:
+    lang: dockerfile
+    handler: ./my-thesis-service-xavier
+    image: 356421549562324/my-thesis-service-xavier:latest
+    labels:
+     com.openfaas.scale.zero: "true"
+     com.openfaas.scale.min: 1
+     com.openfaas.scale.max: 3
+    constraints:
+      - "thesis_type=xavier01"

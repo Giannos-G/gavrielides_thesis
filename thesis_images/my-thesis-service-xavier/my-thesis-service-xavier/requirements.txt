@@ -1,0 +1,16 @@
+# Python templates dependencies
+sklearn
+numpy
+matplotlib
+
+# Energy measurement dependencies
+#sys
+#os
+#signal
+#subprocess
+#time
+#collections
+#itertools
+#os.path
+#configparser
+# from energy_parser import *

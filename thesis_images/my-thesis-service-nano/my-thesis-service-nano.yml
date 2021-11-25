@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  my-thesis-service-nano:
+    lang: dockerfile
+    handler: ./my-thesis-service-nano
+    image: 356421549562324/my-thesis-service-nano:latest
+    labels:
+     com.openfaas.scale.zero: "true"
+     com.openfaas.scale.min: 1
+     com.openfaas.scale.max: 3
+    constraints:
+      - "thesis_type=nano2"

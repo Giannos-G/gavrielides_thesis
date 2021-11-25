@@ -1,0 +1,48 @@
+Connect to:
+ssh -i ~/.ssh/my_correct_key gavrielides@147.102.37.150
+pword = 9775957######
+sud0 pssw0rd = 12**giannos12**
+
+ssh -i ~/.ssh/my_correct_key gavrielides@147.102.37.152
+pword = 9775957######
+
+Connect to:
+ssh gavrielides@192.168.1.252
+pword = diplomagia##os123#
+
+ssh gavrielides@192.168.1.253
+pword = gia##os
+
+ssh mlab@192.168.1.249
+pword = 9775957###
+
+Download the needed libraries: 
+	matplotlib
+	sklearn
+
+gavrielides@xavier-nx-00:~/python_dataset/py_scripts$ python energy_on_nano.py
+
+
+delete plot_partial_dependence.py
+
+# Get energy of a function
+sudo python measure_time_energy.py "python3 15_linear_regression.py" 2
+
+# Rights 
+sudo chmod go+w prof_time.txt
+	#nano
+sudo chmod -R 777 /sys/bus/i2c/devices
+	#xavier
+sudo chmod -R 777 /sys/bus/i2c/drivers
+
+#Build publish deploy invoke 
+sudo faas-cli publish -f my-thesis-service-nano.yml --platforms linux/arm64
+faas-cli deploy -f my-thesis-service-nano.yml
+faas-cli invoke my-thesis-service-nano
+
+#See logs of a pod
+kubectl logs -f -n openfaas-fn my-thesis-service-nano-74f5c649cc-kvqdm
+
+
+
+

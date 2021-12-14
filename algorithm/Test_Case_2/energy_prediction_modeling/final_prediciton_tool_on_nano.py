@@ -7,8 +7,9 @@ import numpy as np
 
 from sklearn.linear_model import LinearRegression
 
+
 def main():
-    #--------------Uploading dataset--------------
+    #--------------Uploading dataset-------------
     data = pd.read_csv("/home/giannos-g/Desktop/gavrielides_thesis/algorithm/Test_Case_2/energy_prediction_modeling/my_dataset.csv")
     data.drop("PyScript", inplace=True, axis=1) # Delete 1st column => filenames of samples
 

@@ -11,7 +11,7 @@ In each directory we analyze every step individually [^1]. A complete run of our
 The process we followed is described below:
 ![Process](https://user-images.githubusercontent.com/77551993/148932896-f9d72a83-c58a-4468-af03-90000c5ae7f2.png)
 
-[^1]: *Please ignore:*
+[^1]: Please ignore:
   *./Connection Strings*
   *./git_instructions.txt*
-  - ./what I have to do
+  *./what I have to do*

@@ -7,7 +7,7 @@ In this thesis, we present a tool which proposes a way in which the individual f
 Our tool analyzes (profiles) the code file given in terms of memory requirements and the execution time of each of its individual functions on our testing device (personal computer) and then using machine learning techniques (Linear Regression and Decision Tree Regression models) predicts the energy consumption and the execution time of each function on each of our devices. The utilization of this information and the decision for the proposed solution is achieved through our developed algorithm which is inspired by the well-known *simulated annealing algorithm*. Furthermore, using Openfaas, Kubernetes and Docker we show that our work is quite promising and to be continued.
 
 ### Repo description
-In each directory we analyze every step individually. A complete run of our algorithm (evaluation using a monolithic application) can be found in ./algorithm/Test_Case_2
+In each directory we analyze every step individually [^1]. A complete run of our algorithm (evaluation using a monolithic application) can be found in ./algorithm/Test_Case_2
 The process we followed is described below:
 ![Process](https://user-images.githubusercontent.com/77551993/148932896-f9d72a83-c58a-4468-af03-90000c5ae7f2.png)
 

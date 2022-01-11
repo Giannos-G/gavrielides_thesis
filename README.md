@@ -1,5 +1,5 @@
 # This is the GitHub Repository of my Thesis project during my Undergaduate Studies at the National Tecnhical University of Athens
-## Title of the thesis: **A software analysis tool for Energy and Time-aware function placement on the Edge** 
+## Title of the thesis: A software analysis tool for Energy and Time-aware function placement on the Edge 
 ### Introduction
 
 In this thesis, we present a tool which proposes a way in which the individual functions of a monolithic code could run in a serverless environment as individual and independent application packaged containers, so that given a maximum runtime threshold by the user, the minimum possible power consumption in our cluster is achieved. Our serverless infrastructure (cluster) consists of Aarch64 Edge devices which are orchestrated by Kubernetes. Finally, using OpenFaaS serverless platform and Docker we managed to package our applications into containers and run them in our serverless environment.

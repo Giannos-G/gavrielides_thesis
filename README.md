@@ -9,7 +9,7 @@ Our tool analyzes (profiles) the code file given in terms of memory requirements
 ### Repo description
 
 
-*Please ignore:
- - ./Connection Strings
- - ./git_instructions.txt
- - ./what I have to do*
+*Please ignore:*
+ - *./Connection Strings*
+ - *./git_instructions.txt*
+ - *./what I have to do*

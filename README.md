@@ -1,4 +1,4 @@
-# This is the GitHub Repository of my Thesis project during my Undergaduate Studies at the National Tecnhical University of Athens
+# This is the GitHub Repository of my Thesis project during my Undergaduate Studies at the Electrical and Computer Engineering Department of National Tecnhical University of Athens
 ## Title of the thesis: A software analysis tool for Energy and Time-aware function placement on the Edge 
 ### Introduction
 

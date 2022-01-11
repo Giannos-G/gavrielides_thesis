@@ -11,6 +11,16 @@ In each directory we analyze every step individually [^1]. A complete run of our
 The process we followed is described below:
 ![Process_white background](https://user-images.githubusercontent.com/77551993/148935115-395967f9-88e9-4530-933a-90cca06aa2eb.png)
 
+Suggested study flow:
+  -1. ./python_profiling
+  -2. ./energy_profiling
+  -3. ./time_profiling
+  -4. ./energy_prediction_modeling
+  -5. ./time_prediction_modeling
+  -6. ./algorithm
+  -7. ./thesis_images
+  -8. ./Useful screenshots on My_Cluster
+
 [^1]: Please ignore:
   *./Connection Strings*
   *./git_instructions.txt*

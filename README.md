@@ -14,4 +14,4 @@ The process we followed is described below:
 [^1]: *Please ignore:*
   *./Connection Strings*
   *./git_instructions.txt*
-  *./what I have to do*
+  - ./what I have to do

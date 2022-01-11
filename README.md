@@ -9,7 +9,7 @@ Our tool analyzes (profiles) the code file given in terms of memory requirements
 ### Repo description
 In each directory we analyze every step individually. A complete run of our algorithm (evaluation using a monolithic application) can be found in ./algorithm/Test_Case_2
 The process we followed is described below:
-![Process](https://user-images.githubusercontent.com/77551993/148932896-f9d72a83-c58a-4468-af03-90000c5ae7f2.png)
+![Process](https://user-images.githubusercontent.com/77551993/148932896-f9d72a83-c58a-4468-af03-90000c5ae7f2.png#gh-light-mode-only)
 
 *Please ignore:*
  - *./Connection Strings*
